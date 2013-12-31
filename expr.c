@@ -1374,9 +1374,9 @@ strlong (num)
 	  if (DIGIT(c))
 	    c = TODIGIT(c);
 	  else if (c >= 'a' && c <= 'z')
-	    c -= 'a' - 10;
+	    c = E2A(c) - E2A('a') + 10;
 	  else if (c >= 'A' && c <= 'Z')
-	    c -= 'A' - ((base <= 36) ? 10 : 36);
+	    c = E2A(c) - E2A('A') + ((base <= 36) ? 10 : 36);
 	  else if (c == '@')
 	    c = 62;
 	  else if (c == '_')

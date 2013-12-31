@@ -87,7 +87,11 @@
 #endif
 
 #if defined (STRCOLL_BROKEN)
+# ifndef __MVS__
 #  undef HAVE_STRCOLL
+# else
+#  undef STRCOLL_BROKEN
+# endif
 #endif
 
 #if !defined (HAVE_POSIX_REGEXP)

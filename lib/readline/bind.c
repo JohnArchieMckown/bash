@@ -118,21 +118,21 @@ rl_bind_key (key, function)
 
   if (META_CHAR (key) && _rl_convert_meta_chars_to_ascii)
     {
-      if (_rl_keymap[ESC].type == ISKMAP)
+      if (_rl_keymap[E2A(ESC)].type == ISKMAP)
 	{
 	  Keymap escmap;
 
-	  escmap = FUNCTION_TO_KEYMAP (_rl_keymap, ESC);
+	  escmap = FUNCTION_TO_KEYMAP (_rl_keymap, E2A(ESC));
 	  key = UNMETA (key);
-	  escmap[key].type = ISFUNC;
-	  escmap[key].function = function;
+	  escmap[E2A(key)].type = ISFUNC;
+	  escmap[E2A(key)].function = function;
 	  return (0);
 	}
       return (key);
     }
 
-  _rl_keymap[key].type = ISFUNC;
-  _rl_keymap[key].function = function;
+  _rl_keymap[E2A(key)].type = ISFUNC;
+  _rl_keymap[E2A(key)].function = function;
   rl_binding_keymap = _rl_keymap;
   return (0);
 }
@@ -1783,6 +1783,19 @@ static const assoc_list name_key_alist[] = {
   { "SPC", ' ' },
   { "Space", ' ' },
   { "Tab", 0x09 },
+#else
+  { "DEL", 0x07 },
+  { "ESC", '\047' },
+  { "Escape", '\047' },
+  { "LFD", '\n' },
+  { "Newline", '\n' },
+  { "RET", '\r' },
+  { "Return", '\r' },
+  { "Rubout", 0x07 },
+  { "SPC", ' ' },
+  { "Space", ' ' },
+  { "Tab", 0x05 },
+#endif
   { (char *)0x0, 0 }
 };
 
@@ -2216,7 +2229,7 @@ _rl_macro_dumper_internal (print_readably, map, prefix)
 	  break;
 	case ISKMAP:
 	  prefix_len = prefix ? strlen (prefix) : 0;
-	  if (key == ESC)
+	  if (key == E2A(ESC))
 	    {
 	      keyname = (char *)xmalloc (3 + prefix_len);
 	      if (prefix)

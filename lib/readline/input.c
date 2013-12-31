@@ -342,8 +342,8 @@ _rl_insert_typein (c)
   string[i++] = (char) c;
 
   while ((t = rl_get_char (&key)) &&
-	 _rl_keymap[key].type == ISFUNC &&
-	 _rl_keymap[key].function == rl_insert)
+	 _rl_keymap[E2A(key)].type == ISFUNC &&
+	 _rl_keymap[E2A(key)].function == rl_insert)
     string[i++] = key;
 
   if (t)

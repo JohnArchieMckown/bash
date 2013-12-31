@@ -1744,7 +1744,11 @@ _rl_vi_change_char (count, c, mb)
 {
   int p;
 
+#ifndef __MVS__
   if (c == '\033' || c == CTRL ('C'))
+#else
+  if (c == '\047' || c == CTRL ('C'))
+#endif
     return -1;
 
   rl_begin_undo_group ();

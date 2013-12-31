@@ -1177,6 +1177,9 @@ EOF
                       # says <Richard.M.Bartel@ccMail.Census.GOV>
         echo i586-unisys-sysv4
         exit ;;
+    *:OS/390:*:*)
+        echo i370-ibm-mvs
+	exit ;;
     *:UNIX_System_V:4*:FTX*)
 	# From Gerald Hewes <hewes@openmarket.com>.
 	# How about differentiating between stratus architectures? -djm
