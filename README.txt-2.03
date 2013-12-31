@@ -1,0 +1,37 @@
+This directory contains the bash package for z/OS 
+It is included as part of the additional material with 
+the redbook. "Open Source Software for z/OS and OS/390 
+UNIX", SG24-5944-01.  Once the tar file is unwound,
+see the package contents for license information, main 
+README, etc. 
+
+It might help to first read the chapter "bash" in the book.
+If you don't have the book it should be on the Web starting at:
+http://www.redbooks.ibm.com/abstracts/sg245944.html
+
+You can install the package yourself or to use the install file 
+in this directory.  The syntax is:
+
+  bash.install tar_file install_dir
+
+  where: tar_file is bash-2.03-mvs.tar.gz, and
+         /usr/local is the recommended install_dir 
+
+Also, there is an install script for all packages associated 
+with this redbook that should be ../5944-01.install.  
+See chapter 3 of the book, "What is on the CD". 
+
+Besides the source code, binaries are also provided if you
+don't have a C/C++ compiler or just don't want to build them.
+The binary tar file bash.bin.pax.Z was built on OS/390 V2R9.
+You unwind it with "pax -rzf" and /usr/local is recommended.
+The following files are in the archive bash.bin.pax.Z:
+bin/
+bin/bash
+man/
+man/C/
+man/C/cat1/
+man/C/cat1/bash.1
+man/C/cat5/
+man/C/cat7/
+man/C/cat8/

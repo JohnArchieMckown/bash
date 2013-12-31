@@ -1,0 +1,852 @@
+diff -r bash-2.03/config-bot.h bash-2.03-mvs/config-bot.h
+65a66
+> # ifndef __MVS__
+66a68,70
+> # else
+> #  undef STRCOLL_BROKEN
+> # endif
+diff -r bash-2.03/configure bash-2.03-mvs/configure
+93c93
+< # Generated automatically using autoconf version 2.12 
+---
+> # Generated automatically using autoconf version 2.12
+745a746
+> *-mvs*)  opt_gnu_malloc=no ;; # os/390
+791c792
+< if test "$opt_glibc_malloc" = yes; then 
+---
+> if test "$opt_glibc_malloc" = yes; then
+1558c1559
+< 	*)	opt_with_installed_readline=no 
+---
+> 	*)	opt_with_installed_readline=no
+2652c2653
+<  
+---
+> 
+2711c2712
+<  
+---
+> 
+2752c2753
+<  
+---
+> 
+2807c2808
+<  
+---
+> 
+2912c2913
+<  
+---
+> 
+3018c3019
+<  
+---
+> 
+3262c3263
+<  
+---
+> 
+3304c3305
+<  
+---
+> 
+4784c4785
+<  lstat(".",(struct stat *)0); 
+---
+>  lstat(".",(struct stat *)0);
+4954c4955
+<   
+---
+> 
+4966c4967
+<   
+---
+> 
+4976c4977
+<   
+---
+> 
+4985c4986
+<     
+---
+> 
+4995c4996
+<   
+---
+> 
+5007c5008
+<         
+---
+> 
+5018c5019
+<     
+---
+> 
+5021c5022
+<   
+---
+> 
+5218c5219
+<  char *msg = _sys_siglist[2]; 
+---
+>  char *msg = _sys_siglist[2];
+5465c5466
+<   
+---
+> 
+6409c6410
+< #if !defined (WNOHANG) || !defined (WUNTRACED) 
+---
+> #if !defined (WNOHANG) || !defined (WUNTRACED)
+6547c6548
+< if test $bash_cv_tiocgwinsz_in_ioctl = yes; then   
+---
+> if test $bash_cv_tiocgwinsz_in_ioctl = yes; then
+6581c6582
+< if test $bash_cv_tiocstat_in_ioctl = yes; then   
+---
+> if test $bash_cv_tiocstat_in_ioctl = yes; then
+6615c6616
+< if test $bash_cv_fionread_in_ioctl = yes; then   
+---
+> if test $bash_cv_fionread_in_ioctl = yes; then
+6649c6650
+< if test $bash_cv_speed_t_in_sys_types = yes; then   
+---
+> if test $bash_cv_speed_t_in_sys_types = yes; then
+7059a7061
+> mvs*)  LOCAL_CFLAGS="-DNO_MAIN_ENV_ARG -D_ALL_SOURCE" ;;
+diff -r bash-2.03/configure.in bash-2.03-mvs/configure.in
+53a54
+> *-mvs*)  opt_gnu_malloc=no ;; # os/390
+67c68
+< if test "$opt_glibc_malloc" = yes; then 
+---
+> if test "$opt_glibc_malloc" = yes; then
+334c335
+< 	*)	opt_with_installed_readline=no 
+---
+> 	*)	opt_with_installed_readline=no
+643a645
+> mvs*)  LOCAL_CFLAGS="-DNO_MAIN_ENV_ARG -D_ALL_SOURCE" ;;
+Only in bash-2.03-mvs: ebcdic.h
+diff -r bash-2.03/expr.c bash-2.03-mvs/expr.c
+997c997
+< 	    c -= 'a' - 10;
+---
+> 	    c = E2A(c) - E2A('a') + 10;
+999c999
+< 	    c -= 'A' - ((base <= 36) ? 10 : 36);
+---
+> 	    c = E2A(c) - E2A('A') + ((base <= 36) ? 10 : 36);
+diff -r bash-2.03/general.h bash-2.03-mvs/general.h
+85a86
+> #ifndef __MVS__
+86a88,90
+> #else
+> #define isletter(c) isalpha((c))
+> #endif
+Only in bash-2.03-mvs/lib/glob: ebcdic.h
+diff -r bash-2.03/lib/glob/fnmatch.c bash-2.03-mvs/lib/glob/fnmatch.c
+7c7
+<    
+---
+> 
+12c12
+<               
+---
+> 
+17c17
+<                          
+---
+> 
+23c23
+<                                 
+---
+> 
+40c40,47
+<   
+---
+> 
+> #ifdef __MVS__
+> #include "ebcdic.h"
+> #define E2A(c) (E2Atab[(c)])
+> #else
+> #define E2A(c) (c)
+> #endif
+> 
+213c220
+< 	  
+---
+> 	
+330c337
+<           
+---
+> 
+346c353
+<           
+---
+> 
+451c458
+<  
+---
+> 
+707c714
+<       
+---
+> 
+diff -r bash-2.03/lib/readline/bind.c bash-2.03-mvs/lib/readline/bind.c
+149c149
+<       if (_rl_keymap[ESC].type == ISKMAP)
+---
+>       if (_rl_keymap[E2A(ESC)].type == ISKMAP)
+153c153
+< 	  escmap = FUNCTION_TO_KEYMAP (_rl_keymap, ESC);
+---
+> 	  escmap = FUNCTION_TO_KEYMAP (_rl_keymap, E2A(ESC));
+155,156c155,156
+< 	  escmap[key].type = ISFUNC;
+< 	  escmap[key].function = function;
+---
+> 	  escmap[E2A(key)].type = ISFUNC;
+> 	  escmap[E2A(key)].function = function;
+162,163c162,163
+<   _rl_keymap[key].type = ISFUNC;
+<   _rl_keymap[key].function = function;
+---
+>   _rl_keymap[E2A(key)].type = ISFUNC;
+>   _rl_keymap[E2A(key)].function = function;
+313,314c313,314
+< 	  if (map[ESC].type == ISKMAP)
+< 	    map = FUNCTION_TO_KEYMAP (map, ESC);
+---
+> 	  if (map[E2A(ESC)].type == ISKMAP)
+> 	    map = FUNCTION_TO_KEYMAP (map, E2A(ESC));
+319c319
+< 	  if (map[ic].type != ISKMAP)
+---
+> 	  if (map[E2A(ic)].type != ISKMAP)
+321,322c321,322
+< 	      if (map[ic].type == ISMACR)
+< 		free ((char *)map[ic].function);
+---
+> 	      if (map[E2A(ic)].type == ISMACR)
+> 		free ((char *)map[E2A(ic)].function);
+324,325c324,325
+< 	      map[ic].type = ISKMAP;
+< 	      map[ic].function = KEYMAP_TO_FUNCTION (rl_make_bare_keymap());
+---
+> 	      map[E2A(ic)].type = ISKMAP;
+> 	      map[E2A(ic)].function = KEYMAP_TO_FUNCTION (rl_make_bare_keymap());
+327c327
+< 	  map = FUNCTION_TO_KEYMAP (map, ic);
+---
+> 	  map = FUNCTION_TO_KEYMAP (map, E2A(ic));
+331,332c331,332
+< 	  if (map[ic].type == ISMACR)
+< 	    free ((char *)map[ic].function);
+---
+> 	  if (map[E2A(ic)].type == ISMACR)
+> 	    free ((char *)map[E2A(ic)].function);
+334,335c334,335
+< 	  map[ic].function = KEYMAP_TO_FUNCTION (data);
+< 	  map[ic].type = type;
+---
+> 	  map[E2A(ic)].function = KEYMAP_TO_FUNCTION (data);
+> 	  map[E2A(ic)].type = type;
+387c387
+< 	    }	      
+---
+> 	    }	
+589c589
+< 	  if (map[ESC].type != ISKMAP)
+---
+> 	  if (map[E2A(ESC)].type != ISKMAP)
+592c592
+< 		*type = map[ESC].type;
+---
+> 		*type = map[E2A(ESC)].type;
+594c594
+< 	      return (map[ESC].function);
+---
+> 	      return (map[E2A(ESC)].function);
+598c598
+< 	      map = FUNCTION_TO_KEYMAP (map, ESC);
+---
+> 	      map = FUNCTION_TO_KEYMAP (map, E2A(ESC));
+603c603
+<       if (map[ic].type == ISKMAP)
+---
+>       if (map[E2A(ic)].type == ISKMAP)
+612c612
+< 	      return (map[ic].function);
+---
+> 	      return (map[E2A(ic)].function);
+615c615
+< 	    map = FUNCTION_TO_KEYMAP (map, ic);
+---
+> 	    map = FUNCTION_TO_KEYMAP (map, E2A(ic));
+620c620
+< 	    *type = map[ic].type;
+---
+> 	    *type = map[E2A(ic)].type;
+622c622
+< 	  return (map[ic].function);
+---
+> 	  return (map[E2A(ic)].function);
+742c742
+<   
+---
+> 
+943c943
+<   
+---
+> 
+1378c1378
+<       
+---
+> 
+1391a1392
+> #ifndef __MVS__
+1402a1404,1416
+> #else
+>   { "DEL", 0x07 },
+>   { "ESC", '\047' },
+>   { "Escape", '\047' },
+>   { "LFD", '\n' },
+>   { "Newline", '\n' },
+>   { "RET", '\r' },
+>   { "Return", '\r' },
+>   { "Rubout", 0x07 },
+>   { "SPC", ' ' },
+>   { "Space", ' ' },
+>   { "Tab", 0x05 },
+> #endif
+1459c1473
+<   
+---
+> 
+1831c1845
+< 	  if (key == ESC)
+---
+> 	  if (key == E2A(ESC))
+diff -r bash-2.03/lib/readline/chardefs.h bash-2.03-mvs/lib/readline/chardefs.h
+37a38,47
+> #ifdef __MVS__
+> extern char E2Atab[256];     /* ebcdic  to ascii   table */
+> extern char A2Etab[256];     /* ascii   to ebcdic  table */
+> #define E2A(c) (E2Atab[(c)])
+> #define A2E(c) (A2Etab[(c)])
+> #else
+> #define E2A(c) (c)
+> #define A2E(c) (c)
+> #endif
+> 
+54,55c64,65
+< #define CTRL_CHAR(c) ((c) < control_character_threshold && (c) >= 0)
+< #define META_CHAR(c) ((c) > meta_character_threshold && (c) <= largest_char)
+---
+> #define CTRL_CHAR(c) (E2A(c) < control_character_threshold && E2A(c) >= 0)
+> #define META_CHAR(c) (E2A(c) > meta_character_threshold && E2A(c) <= largest_char)
+57,58c67,68
+< #define CTRL(c) ((c) & control_character_mask)
+< #define META(c) ((c) | meta_character_bit)
+---
+> #define CTRL(c) A2E(E2A(c) & control_character_mask)
+> #define META(c) A2E(E2A(c) | meta_character_bit)
+60,61c70,71
+< #define UNMETA(c) ((c) & (~meta_character_bit))
+< #define UNCTRL(c) _rl_to_upper(((c)|control_character_bit))
+---
+> #define UNMETA(c) A2E(E2A(c) & (~meta_character_bit))
+> #define UNCTRL(c) _rl_to_upper(A2E(E2A(c)|control_character_bit))
+62a73,132
+> #ifdef __MVS__
+> #define DEL     0x07
+> #define CTRL_A  0x01
+> #define CTRL_B  0x02
+> #define CTRL_C  0x03
+> #define CTRL_D  0x37
+> #define CTRL_E  0x2d
+> #define CTRL_F  0x2e
+> #define CTRL_G  0x2f
+> #define CTRL_H  0x16
+> #define CTRL_I  0x05
+> #define CTRL_J  0x15
+> #define CTRL_K  0x0b
+> #define CTRL_L  0x0c
+> #define CTRL_M  0x0d
+> #define CTRL_N  0x0e
+> #define CTRL_O  0x0f
+> #define CTRL_P  0x10
+> #define CTRL_Q  0x11
+> #define CTRL_R  0x12
+> #define CTRL_S  0x13
+> #define CTRL_T  0x3c
+> #define CTRL_U  0x3d
+> #define CTRL_V  0x32
+> #define CTRL_W  0x26
+> #define CTRL_X  0x18
+> #define CTRL_Y  0x19
+> #define CTRL_Z  0x3f
+> #define CTRL_LB 0x27
+> #else
+> #define DEL     0x7f
+> #define CTRL_A  CTRL('A')
+> #define CTRL_B  CTRL('B')
+> #define CTRL_C  CTRL('C')
+> #define CTRL_D  CTRL('D')
+> #define CTRL_E  CTRL('E')
+> #define CTRL_F  CTRL('F')
+> #define CTRL_G  CTRL('G')
+> #define CTRL_H  CTRL('H')
+> #define CTRL_I  CTRL('I')
+> #define CTRL_J  CTRL('J')
+> #define CTRL_K  CTRL('K')
+> #define CTRL_L  CTRL('L')
+> #define CTRL_M  CTRL('M')
+> #define CTRL_N  CTRL('N')
+> #define CTRL_O  CTRL('O')
+> #define CTRL_P  CTRL('P')
+> #define CTRL_Q  CTRL('Q')
+> #define CTRL_R  CTRL('R')
+> #define CTRL_S  CTRL('S')
+> #define CTRL_T  CTRL('T')
+> #define CTRL_U  CTRL('U')
+> #define CTRL_V  CTRL('V')
+> #define CTRL_W  CTRL('W')
+> #define CTRL_X  CTRL('X')
+> #define CTRL_Y  CTRL('Y')
+> #define CTRL_Z  CTRL('Z')
+> #define CTRL_LB CTRL('[')
+> #endif
+> 
+95c165
+< #define RETURN CTRL('M')
+---
+> #define RETURN CTRL_M
+99c169
+< #define RUBOUT 0x7f
+---
+> #define RUBOUT DEL
+109c179
+< #define ABORT_CHAR CTRL('G')
+---
+> #define ABORT_CHAR CTRL_G
+114c184
+< #define PAGE CTRL('L')
+---
+> #define PAGE CTRL_L
+124c194
+< #define ESC CTRL('[')
+---
+> #define ESC CTRL_LB
+Only in bash-2.03-mvs/lib/readline: ebcdic.h
+diff -r bash-2.03/lib/readline/input.c bash-2.03-mvs/lib/readline/input.c
+297c297
+<      int c;     
+---
+>      int c;
+307,308c307,308
+< 	 _rl_keymap[key].type == ISFUNC &&
+< 	 _rl_keymap[key].function == rl_insert)
+---
+> 	 _rl_keymap[E2A(key)].type == ISFUNC &&
+> 	 _rl_keymap[E2A(key)].function == rl_insert)
+diff -r bash-2.03/lib/readline/isearch.c bash-2.03-mvs/lib/readline/isearch.c
+192a193
+> #ifndef __MVS__
+193a195,197
+> #else
+> 						: (unsigned char *)"\047\025";
+> #endif
+247c251
+<       if (_rl_keymap[c].type == ISFUNC)
+---
+>       if (_rl_keymap[E2A(c)].type == ISFUNC)
+249c253
+< 	  f = _rl_keymap[c].function;
+---
+> 	  f = _rl_keymap[E2A(c)].function;
+306c310
+< 	case CTRL ('G'):
+---
+> 	case CTRL_G:
+diff -r bash-2.03/lib/readline/keymaps.c bash-2.03-mvs/lib/readline/keymaps.c
+67c67
+<   for (i = 'A'; i < ('Z' + 1); i++)
+---
+>   for (i = E2A('A'); i < (E2A('Z') + 1); i++)
+104c104
+<   for (i = ' '; i < 127; i++)
+---
+>   for (i = E2A(' '); i < 127; i++)
+107,109c107,109
+<   newmap[TAB].function = rl_insert;
+<   newmap[RUBOUT].function = rl_rubout;	/* RUBOUT == 127 */
+<   newmap[CTRL('H')].function = rl_rubout;
+---
+>   newmap[E2A(TAB)].function = rl_insert;
+>   newmap[E2A(RUBOUT)].function = rl_rubout;	/* RUBOUT == 127 */
+>   newmap[E2A(CTRL('H'))].function = rl_rubout;
+diff -r bash-2.03/lib/readline/readline.c bash-2.03-mvs/lib/readline/readline.c
+175a176,179
+> #ifdef __MVS__
+> #include "ebcdic.h"
+> #endif
+> 
+265c269
+< int _rl_eof_char = CTRL ('D');
+---
+> int _rl_eof_char = CTRL_D;
+278c282
+< int _rl_mark_modified_lines = 0;  
+---
+> int _rl_mark_modified_lines = 0;
+283c287
+<      
+---
+> 
+566c570
+<       if (map[ESC].type == ISKMAP)
+---
+>       if (map[E2A(ESC)].type == ISKMAP)
+570c574
+< 	  map = FUNCTION_TO_KEYMAP (map, ESC);
+---
+> 	  map = FUNCTION_TO_KEYMAP (map, E2A(ESC));
+584c588
+<   switch (map[key].type)
+---
+>   switch (map[E2A(key)].type)
+587c591
+<       func = map[key].function;
+---
+>       func = map[E2A(key)].function;
+597c601
+< 	  _rl_suppress_redisplay = (map[key].function == rl_insert) && _rl_input_available ();
+---
+> 	  _rl_suppress_redisplay = (map[E2A(key)].function == rl_insert) && _rl_input_available ();
+601c605
+< 	  r = (*map[key].function)(rl_numeric_arg * rl_arg_sign, key);
+---
+> 	  r = (*map[E2A(key)].function)(rl_numeric_arg * rl_arg_sign, key);
+607,608c611,612
+< 	  if (!rl_pending_input && map[key].function != rl_digit_argument)
+< 	    rl_last_func = map[key].function;
+---
+> 	  if (!rl_pending_input && map[E2A(key)].function != rl_digit_argument)
+> 	    rl_last_func = map[E2A(key)].function;
+618c622
+<       if (map[key].function != (Function *)NULL)
+---
+>       if (map[E2A(key)].function != (Function *)NULL)
+622c626
+< 	  r = _rl_dispatch (newkey, FUNCTION_TO_KEYMAP (map, key));
+---
+> 	  r = _rl_dispatch (newkey, FUNCTION_TO_KEYMAP (map, E2A(key)));
+632c636
+<       if (map[key].function != (Function *)NULL)
+---
+>       if (map[E2A(key)].function != (Function *)NULL)
+634c638
+< 	  macro = savestring ((char *)map[key].function);
+---
+> 	  macro = savestring ((char *)map[E2A(key)].function);
+758c762
+<       
+---
+> 
+799a804
+> #ifndef __MVS__
+800a806,808
+> #else
+>   f = rl_function_of_keyseq ("\047[A", _rl_keymap, (int *)NULL);
+> #endif
+802a811
+> #ifndef __MVS__
+806a816,821
+> #else
+>       _rl_bind_if_unbound ("\047[A", rl_get_previous_history);
+>       _rl_bind_if_unbound ("\047[B", rl_get_next_history);
+>       _rl_bind_if_unbound ("\047[C", rl_forward);
+>       _rl_bind_if_unbound ("\047[D", rl_backward);
+> #endif
+808a824
+> #ifndef __MVS__
+809a826,828
+> #else
+>   f = rl_function_of_keyseq ("\047OA", _rl_keymap, (int *)NULL);
+> #endif
+811a831
+> #ifndef __MVS__
+815a836,841
+> #else
+>       _rl_bind_if_unbound ("\047OA", rl_get_previous_history);
+>       _rl_bind_if_unbound ("\047OB", rl_get_next_history);
+>       _rl_bind_if_unbound ("\047OC", rl_forward);
+>       _rl_bind_if_unbound ("\047OD", rl_backward);
+> #endif
+871,872c897,898
+<       if (_rl_keymap[c].type == ISFUNC &&
+< 	  _rl_keymap[c].function == rl_universal_argument)
+---
+>       if (_rl_keymap[E2A(c)].type == ISFUNC &&
+> 	  _rl_keymap[E2A(c)].function == rl_universal_argument)
+1425c1451
+<   return (rl_insert (count, c));  
+---
+>   return (rl_insert (count, c));
+1542c1568
+<    to delete forward or backward that many characters. */      
+---
+>    to delete forward or backward that many characters. */
+1551c1577
+< }  
+---
+> }
+diff -r bash-2.03/lib/readline/rltty.c bash-2.03-mvs/lib/readline/rltty.c
+679,680c679,680
+<       if (ic != -1 && kmap[ic].type == ISFUNC) \
+< 	kmap[ic].function = func; \
+---
+>       if (ic != -1 && kmap[E2A(ic)].type == ISFUNC) \
+> 	kmap[E2A(ic)].function = func; \
+708,709c708,709
+<       if (uc != (unsigned char)_POSIX_VDISABLE && kmap[uc].type == ISFUNC) \
+< 	kmap[uc].function = func; \
+---
+>       if (uc != (unsigned char)_POSIX_VDISABLE && kmap[E2A(uc)].type == ISFUNC) \
+> 	kmap[E2A(uc)].function = func; \
+diff -r bash-2.03/lib/readline/search.c bash-2.03-mvs/lib/readline/search.c
+181c181
+< 	case CTRL('H'):
+---
+> 	case CTRL_H:
+193c193
+< 	case CTRL('W'):
+---
+> 	case CTRL_W:
+197c197
+< 	case CTRL('U'):
+---
+> 	case CTRL_U:
+207,208c207,208
+< 	case CTRL('C'):
+< 	case CTRL('G'):
+---
+> 	case CTRL_C:
+> 	case CTRL_G:
+diff -r bash-2.03/lib/readline/vi_mode.c bash-2.03-mvs/lib/readline/vi_mode.c
+218c218
+<     
+---
+> 
+636c636
+<     
+---
+> 
+856,857c856,857
+<       if (_rl_keymap[c].type == ISFUNC &&
+< 	  _rl_keymap[c].function == rl_universal_argument)
+---
+>       if (_rl_keymap[E2A(c)].type == ISFUNC &&
+> 	  _rl_keymap[E2A(c)].function == rl_universal_argument)
+1009c1009
+<   
+---
+> 
+1163a1164
+> #ifndef __MVS__
+1164a1166,1168
+> #else
+>   if (c == '\047' || c == CTRL ('C'))
+> #endif
+1292c1296
+< 	vi_replace_map[i].function = rl_vi_overstrike;
+---
+> 	vi_replace_map[E2A(i)].function = rl_vi_overstrike;
+1294,1297c1298,1301
+<       vi_replace_map[RUBOUT].function = rl_vi_overstrike_delete;
+<       vi_replace_map[ESC].function = rl_vi_movement_mode;
+<       vi_replace_map[RETURN].function = rl_newline;
+<       vi_replace_map[NEWLINE].function = rl_newline;
+---
+>       vi_replace_map[E2A(RUBOUT)].function = rl_vi_overstrike_delete;
+>       vi_replace_map[E2A(ESC)].function = rl_vi_movement_mode;
+>       vi_replace_map[E2A(RETURN)].function = rl_newline;
+>       vi_replace_map[E2A(NEWLINE)].function = rl_newline;
+1302,1304c1306,1308
+<       if (vi_insertion_keymap[CTRL ('H')].type == ISFUNC &&
+< 	  vi_insertion_keymap[CTRL ('H')].function == rl_rubout)
+< 	vi_replace_map[CTRL ('H')].function = rl_vi_overstrike_delete;
+---
+>       if (vi_insertion_keymap[E2A(CTRL ('H'))].type == ISFUNC &&
+> 	  vi_insertion_keymap[E2A(CTRL ('H'))].function == rl_rubout)
+> 	vi_replace_map[E2A(CTRL ('H'))].function = rl_vi_overstrike_delete;
+diff -r bash-2.03/parse.y bash-2.03-mvs/parse.y
+199c199
+< %token IN BANG TIME TIMEOPT 
+---
+> %token IN BANG TIME TIMEOPT
+590c590
+< 	; 
+---
+> 	;
+2507c2507
+<   return (cond_or ());  
+---
+>   return (cond_or ());
+2653c2653
+< }      
+---
+> }
+3192c3192
+<     
+---
+> 
+3538a3539
+> #ifndef __MVS__
+3539a3541,3543
+> #else
+> 	      temp[0] = (c == 'a') ? '\57' : '\047';
+> #endif
+diff -r bash-2.03/shell.c bash-2.03-mvs/shell.c
+198a199,203
+> #ifdef __MVS__
+> #include "ebcdic.h"		/* ebcdic to ascii, ascii to ebcdic tables */
+> int mvs_env_kludge(); /* fix env variables with ascii names/values */
+> #endif
+> 
+299c304
+< #ifdef __OPENNT
+---
+> #if defined(__OPENNT) || defined(__MVS__)
+301a307,309
+> #ifdef __MVS__
+>   mvs_env_kludge();
+> #endif
+1362d1369
+<       
+1363a1371
+> 
+1658a1667,1726
+> #ifdef __MVS__
+> int mvs_env_kludge()
+> {
+>  /* kludge for mvs  --  if enviromental variable name or value
+>                         is ascii then change it to ebcdic
+>  */
+>   int i, j, f, l, l1=0, l2=0, rc;
+>   char *s, *s1=NULL, *s2=NULL, *n1, *n2, *v1, *v2;
+> 
+>   for (i=0; environ[i]; i++) {
+>      s=environ[i];
+>      for (f=j=0; j<strlen(s) && !f; j++)
+>         if (!isprint(s[j])) f=1;
+>      if (!f) continue;
+>      l=strlen(s);
+>      if (l>l1) {
+>         s1=realloc(s1, l+1); s2=realloc(s2, l+1);
+>         l1=l2=l;
+>      }
+>      strcpy(s1, s); strcpy(s2, s);
+>      n1=strtok(s1, "=");
+>      v1=strtok(NULL, "");
+>      n2=strtok(s2, "=");
+>      v2=strtok(NULL, "");
+>      for (f=j=0; j<strlen(n1) && !f; j++)
+>         if (!isprint(n1[j])) f=1;
+>      if (f) { /* convert name to ebcdic */
+>         __atoe(n2);
+>         rc=setenv(n1, NULL, 1);
+>      }
+>      else rc=0;
+>      for (f=j=0; j<strlen(n2) && !f; j++)
+>         if (!isprint(n2[j])) f=1;
+>      if (f) { /* name is neither ascii nor ebcdic */
+>         free(s1); free(s2);
+>         if (rc!=0) return 0;
+>         else return mvs_env_kludge();
+>      }
+>      for (f=j=0; j<strlen(v1) && !f; j++)
+>         if (!isprint(v1[j])) f=1;
+>      if (f)   /* convert value to ebcdic */
+>         __atoe(v2);
+>      for (f=j=0; j<strlen(v2) && !f; j++)
+>         if (!isprint(v2[j])) f=1;
+>      if (f) { /* value is neither ascii nor ebcdic */
+>         if (strcmp(n1, n2) == 0)
+>            rc=setenv(n1, NULL, 1);
+>         else rc=0;
+>         free(s1); free(s2);
+>         if (rc!=0) return 0;
+>         else return mvs_env_kludge();
+>      }
+>      rc=setenv(n2, v2, 1);
+>      free(s1); free(s2);
+>      if (rc!=0) return 0;
+>      else return mvs_env_kludge();
+>   }
+>   return 0;
+> }
+> #endif
+diff -r bash-2.03/shell.h bash-2.03-mvs/shell.h
+114a115
+> #ifndef __MVS__
+115a117,119
+> #else
+> #define CTLNUL '\077'  /* sigh...   \177 is ebcdic "  ...not good */
+> #endif
+126a131,140
+> 
+> #ifdef __MVS__
+> extern char E2Atab[256];		/* ebcdic  to ascii   table */
+> extern char A2Etab[256];		/* ascii   to ebcdic  table */
+> #define E2A(c) (E2Atab[(c)])
+> #define A2E(c) (A2Etab[(c)])
+> #else
+> #define E2A(c) (c)
+> #define A2E(c) (c)
+> #endif
+diff -r bash-2.03/support/config.guess bash-2.03-mvs/support/config.guess
+135c135
+< 	exit 0 ;;    
+---
+> 	exit 0 ;;
+868c868
+< 	exit 0 ;;              
+---
+> 	exit 0 ;;
+884c884,887
+< 	echo i586-unisys-sysv4 
+---
+> 	echo i586-unisys-sysv4
+> 	exit 0 ;;
+>     *:OS/390:*:*)          # os/390  --  <rys@trex.rtpnc.epa.gov>
+> 	echo i370-ibm-mvs
+Only in bash-2.03-mvs/support: ebcdic.h
+diff -r bash-2.03/support/recho.c bash-2.03-mvs/support/recho.c
+2a3,11
+> #ifdef __MVS__
+> #include "ebcdic.h"
+> #define E2A(c) (E2Atab[(c)])
+> #define A2E(c) (A2Etab[(c)])
+> #else
+> #define E2A(c) (c)
+> #define A2E(c) (c)
+> #endif
+> 
+27c36
+< 		if (*s < ' ') {
+---
+> 		if (E2A(*s) < E2A(' ')) {
+29,30c38,39
+< 			putchar(*s+64);
+< 		} else if (*s == 127) {
+---
+> 			putchar(A2E(E2A(*s)+64));
+> 		} else if (E2A(*s) == 127) {
+
