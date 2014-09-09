@@ -226,6 +226,11 @@ int posixly_correct = 1;	/* Non-zero means posix.2 superset. */
 int posixly_correct = 0;	/* Non-zero means posix.2 superset. */
 #endif
 
+#ifdef __MVS__
+#include "ebcdic.h"		/* ebcdic to ascii, ascii to ebcdic tables */
+int mvs_env_kludge(); /* fix env variables with ascii names/values */
+#endif
+
 /* Some long-winded argument names.  These are obviously new. */
 #define Int 1
 #define Charp 2
@@ -359,9 +364,12 @@ main (argc, argv, env)
 #endif
   volatile int locally_skip_execution;
   volatile int arg_index, top_level_arg_index;
-#ifdef __OPENNT
+#if defined(__OPENNT) || defined(__MVS__)
   char **env;
 
+#ifdef __MVS__
+  mvs_env_kludge();
+#endif
   env = environ;
 #endif /* __OPENNT */
 
@@ -1854,3 +1862,63 @@ run_shopt_alist ()
   shopt_alist = 0;
   shopt_ind = shopt_len = 0;
 }
+#ifdef __MVS__
+int mvs_env_kludge()
+{
+ /* kludge for mvs  --  if enviromental variable name or value
+                        is ascii then change it to ebcdic
+ */
+  int i, j, f, l, l1=0, l2=0, rc;
+  char *s, *s1=NULL, *s2=NULL, *n1, *n2, *v1, *v2;
+
+  for (i=0; environ[i]; i++) {
+     s=environ[i];
+     for (f=j=0; j<strlen(s) && !f; j++)
+        if (!isprint(s[j])) f=1;
+     if (!f) continue;
+     l=strlen(s);
+     if (l>l1) {
+        s1=realloc(s1, l+1); s2=realloc(s2, l+1);
+        l1=l2=l;
+     }
+     strcpy(s1, s); strcpy(s2, s);
+     n1=strtok(s1, "=");
+     v1=strtok(NULL, "");
+     n2=strtok(s2, "=");
+     v2=strtok(NULL, "");
+     for (f=j=0; j<strlen(n1) && !f; j++)
+        if (!isprint(n1[j])) f=1;
+     if (f) { /* convert name to ebcdic */
+        __atoe(n2);
+        rc=setenv(n1, NULL, 1);
+     }
+     else rc=0;
+     for (f=j=0; j<strlen(n2) && !f; j++)
+        if (!isprint(n2[j])) f=1;
+     if (f) { /* name is neither ascii nor ebcdic */
+        free(s1); free(s2);
+        if (rc!=0) return 0;
+        else return mvs_env_kludge();
+     }
+     for (f=j=0; j<strlen(v1) && !f; j++)
+        if (!isprint(v1[j])) f=1;
+     if (f)   /* convert value to ebcdic */
+        __atoe(v2);
+     for (f=j=0; j<strlen(v2) && !f; j++)
+        if (!isprint(v2[j])) f=1;
+     if (f) { /* value is neither ascii nor ebcdic */
+        if (strcmp(n1, n2) == 0)
+           rc=setenv(n1, NULL, 1);
+        else rc=0;
+        free(s1); free(s2);
+        if (rc!=0) return 0;
+        else return mvs_env_kludge();
+     }
+     rc=setenv(n2, v2, 1);
+     free(s1); free(s2);
+     if (rc!=0) return 0;
+     else return mvs_env_kludge();
+  }
+  return 0;
+}
+#endif

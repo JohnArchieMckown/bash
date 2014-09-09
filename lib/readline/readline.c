@@ -203,7 +203,7 @@ static char *the_line;
 
 /* The character that can generate an EOF.  Really read from
    the terminal driver... just defaulted here. */
-int _rl_eof_char = CTRL ('D');
+int _rl_eof_char = CTRL_D;
 
 /* Non-zero makes this the next keystroke to read. */
 int rl_pending_input = 0;

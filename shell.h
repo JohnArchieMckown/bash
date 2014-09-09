@@ -106,7 +106,11 @@ struct fd_bitmap {
 #define FD_BITMAP_SIZE 32
 
 #define CTLESC '\001'
+#ifndef __MVS__
 #define CTLNUL '\177'
+#else
+#define CTLNUL '\077'  /* sigh...   \177 is ebcdic "  ...not good */
+#endif
 
 /* Information about the current user. */
 struct user_info {

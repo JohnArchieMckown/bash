@@ -38,6 +38,16 @@
 #  include <string.h>
 #endif /* !HAVE_CONFIG_H */
 
+#ifdef __MVS__
+extern char E2Atab[256];     /* ebcdic  to ascii   table */
+extern char A2Etab[256];     /* ascii   to ebcdic  table */
+#define E2A(c) (E2Atab[(c)])
+#define A2E(c) (A2Etab[(c)])
+#else
+#define E2A(c) (c)
+#define A2E(c) (c)
+#endif
+
 #ifndef whitespace
 #define whitespace(c) (((c) == ' ') || ((c) == '\t'))
 #endif
@@ -130,11 +140,11 @@
 #endif
 
 #ifndef RETURN
-#define RETURN CTRL('M')
+#define RETURN CTRL_M
 #endif
 
 #ifndef RUBOUT
-#define RUBOUT 0x7f
+#define RUBOUT DEL
 #endif
 
 #ifndef TAB
@@ -144,12 +154,12 @@
 #ifdef ABORT_CHAR
 #undef ABORT_CHAR
 #endif
-#define ABORT_CHAR CTRL('G')
+#define ABORT_CHAR CTRL_G
 
 #ifdef PAGE
 #undef PAGE
 #endif
-#define PAGE CTRL('L')
+#define PAGE CTRL_L
 
 #ifdef SPACE
 #undef SPACE
@@ -159,6 +169,6 @@
 #ifdef ESC
 #undef ESC
 #endif
-#define ESC CTRL('[')
+#define ESC CTRL_LB
 
 #endif  /* _CHARDEFS_H_ */

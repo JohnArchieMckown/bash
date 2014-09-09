@@ -5349,9 +5349,17 @@ decode_prompt_string (string)
 	    case 'r':
 	      temp = (char *)xmalloc (2);
 	      if (c == 'a')
+#ifndef __MVS__
 		temp[0] = '\07';
+#else
+		temp[0] = '\57';
+#endif
 	      else if (c == 'e')
+#ifndef __MVS__
 		temp[0] = '\033';
+#else
+		temp[0] = '\47';
+#endif
 	      else if (c == 'r')
 		temp[0] = '\r';
 	      else			/* (c == '\\') */

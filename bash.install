@@ -1,0 +1,34 @@
+#!/bin/sh
+# bash install file
+scriptName=`basename $0`
+if [ $# != 2 ]; then
+  echo "Usage: $scriptName archive install_dir"
+  exit
+fi
+archive=$1
+installDir=$2
+
+# unwind and build
+echo "$archive was installed by $scriptName on `date`"
+echo "unwinding via the command 'gzip -c -d $archive | pax -o from=ISO8859-1,to=IBM-1047 -r'"
+gzip -c -d $archive | pax -o from=ISO8859-1,to=IBM-1047 -r
+ln -s bash-2.03-mvs bash 
+cd bash
+ln -s /usr/include/stdlib.h ./alloca.h
+export _CC_INCDIRS="/usr/include $PWD"
+export LOCAL_LDFLAGS=-Wl,EDIT=NO
+echo "creating makefile via the command 'LDFLAGS=-Wl,EDIT=NO ./configure' ..."
+LDFLAGS=-Wl,EDIT=NO ./configure --prefix=$installDir
+ln -s /bin/touch ./size
+export PATH=$PATH:$PWD
+echo "building via the command 'make' ..."
+make
+rc=$?
+echo "return code from make = $rc"
+if [ $rc != 0 ]; then
+  exit $rc
+fi
+echo "copying executables and man pages to $installDir/bin and man ..."
+cp bash $installDir/bin
+cp doc/bash.1 $installDir/man/$LANG/cat1
+

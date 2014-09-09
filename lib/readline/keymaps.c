@@ -107,12 +107,12 @@ rl_make_keymap ()
   newmap = rl_make_bare_keymap ();
 
   /* All ASCII printing characters are self-inserting. */
-  for (i = ' '; i < 127; i++)
+  for (i = E2A(' '); i < 127; i++)
     newmap[i].function = rl_insert;
 
-  newmap[TAB].function = rl_insert;
-  newmap[RUBOUT].function = rl_rubout;	/* RUBOUT == 127 */
-  newmap[CTRL('H')].function = rl_rubout;
+  newmap[E2A(TAB)].function = rl_insert;
+  newmap[E2A(RUBOUT)].function = rl_rubout;	/* RUBOUT == 127 */
+  newmap[E2A(CTRL('H'))].function = rl_rubout;
 
 #if KEYMAP_SIZE > 128
   /* Printing characters in ISO Latin-1 and some 8-bit character sets. */

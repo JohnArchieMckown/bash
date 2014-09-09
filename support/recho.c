@@ -31,6 +31,15 @@
 #include "bashansi.h"
 #include <stdio.h>
 
+#ifdef __MVS__
+#include "ebcdic.h"
+#define E2A(c) (E2Atab[(c)])
+#define A2E(c) (A2Etab[(c)])
+#else
+#define E2A(c) (c)
+#define A2E(c) (c)
+#endif
+
 void strprint();
 
 int
@@ -55,10 +64,10 @@ char	*str;
 	register unsigned char *s;
 
 	for (s = (unsigned char *)str; s && *s; s++) {
-		if (*s < ' ') {
+		if (E2A(*s) < E2A(' ')) {
 			putchar('^');
-			putchar(*s+64);
-		} else if (*s == 127) {
+			putchar(A2E(E2A(*s)+64));
+		} else if (E2A(*s) == 127) {
 			putchar('^');
 			putchar('?');
 		} else
