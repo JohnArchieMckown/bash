@@ -81,7 +81,7 @@
 
 #if defined (__OPENNT)
 #  include <opennt/opennt.h>
-#endif
+#endif /* __OPENNT */
 
 #if !defined (HAVE_GETPW_DECLS)
 extern struct passwd *getpwuid ();
@@ -91,7 +91,7 @@ extern struct passwd *getpwuid ();
 extern int errno;
 #endif
 
-#if defined (NO_MAIN_ENV_ARG)
+#if defined (NO_MAIN_ENV_ARG) || defined(__MVS__)
 extern char **environ;	/* used if no third argument to main() */
 #endif
 
@@ -364,10 +364,10 @@ main (argc, argv, env)
 #endif
   volatile int locally_skip_execution;
   volatile int arg_index, top_level_arg_index;
-#if defined(__OPENNT) 
-  env = environment;
+#if defined(__OPENNT)                    
+  char **env;
+  env = environ;
 #endif /* __OPENNT */
-
 #ifdef __MVS__
   mvs_env_kludge();
 #endif
@@ -1584,7 +1584,7 @@ set_shell_name (argv0)
 {
   /* Here's a hack.  If the name of this shell is "sh", then don't do
      any startup files; just try to be more like /bin/sh. */
-  shell_name = argv0 ? base_pathname (argv0) : PROGRAM;
+  shell_name = argv0 ? base_pathname (argv0) : PROGRAM;        
 
   if (argv0 && *argv0 == '-')
     {
