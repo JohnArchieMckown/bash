@@ -165,7 +165,7 @@ const char *_nl_locale_name PARAMS ((int category, const char *categoryname));
 #endif
 
 struct loaded_l10nfile *_nl_find_domain PARAMS ((const char *__dirname,
-						 char *__locale,
+						 char *__local_e, /*__locale incompat with z/OS compiler */
 						 const char *__domainname,
 					      struct binding *__domainbinding))
      internal_function;
