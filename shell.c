@@ -364,14 +364,13 @@ main (argc, argv, env)
 #endif
   volatile int locally_skip_execution;
   volatile int arg_index, top_level_arg_index;
-#if defined(__OPENNT) || defined(__MVS__)
-  char **env;
+#if defined(__OPENNT) 
+  env = environment;
+#endif /* __OPENNT */
 
 #ifdef __MVS__
   mvs_env_kludge();
 #endif
-  env = environ;
-#endif /* __OPENNT */
 
   USE_VAR(argc);
   USE_VAR(argv);
