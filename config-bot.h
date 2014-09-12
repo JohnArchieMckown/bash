@@ -201,3 +201,18 @@
 
 /* If you don't want bash to provide a default mail file to check. */
 /* #undef DEFAULT_MAIL_DIRECTORY */
+#ifdef __MVS__
+#if __EDC_TARGET < __EDC_LE4201
+/******************************************************************/
+/* under HAVE___FPURGE if compiling on z/OS 2.1+ but targetting   */
+/* previous releases. *
+/******************************************************************/
+#undef HAVE___FPURGE
+/******************************************************************/
+/* and while I'm at it, define the __new4201 macro used           */
+/* internally in z/OS 2.1+ which does the "nasty" feature which   */
+/* messes up GNU autoconfig's ./configure                         */
+/******************************************************************/
+#define __new4201
+#endif
+#endif
