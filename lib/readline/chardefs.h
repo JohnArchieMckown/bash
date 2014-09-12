@@ -67,6 +67,16 @@ extern char A2Etab[256];     /* ascii   to ebcdic  table */
 #define meta_character_bit 0x080	    /* x0000000, must be on. */
 #define largest_char 255		    /* Largest character value. */
 
+#ifdef __MVS__
+#define CTRL_CHAR(c) (E2A(c) < control_character_threshold && E2A(c) >= 0)
+#define META_CHAR(c) (E2A(c) > meta_character_threshold && E2A(c) <= largest_char)
+
+#define CTRL(c) A2E(E2A(c) & control_character_mask)
+#define META(c) A2E(E2A(c) | meta_character_bit)
+
+#define UNMETA(c) A2E(E2A(c) & (~meta_character_bit))
+#define UNCTRL(c) _rl_to_upper(A2E(E2A(c)|control_character_bit))
+#else
 #define CTRL_CHAR(c) ((c) < control_character_threshold && (((c) & 0x80) == 0))
 #define META_CHAR(c) ((c) > meta_character_threshold && (c) <= largest_char)
 
@@ -75,6 +85,39 @@ extern char A2Etab[256];     /* ascii   to ebcdic  table */
 
 #define UNMETA(c) ((c) & (~meta_character_bit))
 #define UNCTRL(c) _rl_to_upper(((c)|control_character_bit))
+#endif
+
+#ifdef __MVS__
+#define DEL     0x07
+#define CTRL_A  0x01
+#define CTRL_B  0x02
+#define CTRL_C  0x03
+#define CTRL_D  0x37
+#define CTRL_E  0x2d
+#define CTRL_F  0x2e
+#define CTRL_G  0x2f
+#define CTRL_H  0x16
+#define CTRL_I  0x05
+#define CTRL_J  0x15
+#define CTRL_K  0x0b
+#define CTRL_L  0x0c
+#define CTRL_M  0x0d
+#define CTRL_N  0x0e
+#define CTRL_O  0x0f
+#define CTRL_P  0x10
+#define CTRL_Q  0x11
+#define CTRL_R  0x12
+#define CTRL_S  0x13
+#define CTRL_T  0x3c
+#define CTRL_U  0x3d
+#define CTRL_V  0x32
+#define CTRL_W  0x26
+#define CTRL_X  0x18
+#define CTRL_Y  0x19
+#define CTRL_Z  0x3f
+#define CTRL_LB 0x27
+#endif
+
 
 #if defined STDC_HEADERS || (!defined (isascii) && !defined (HAVE_ISASCII))
 #  define IN_CTYPE_DOMAIN(c) 1
