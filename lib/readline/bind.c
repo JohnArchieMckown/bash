@@ -1772,6 +1772,7 @@ typedef struct {
 } assoc_list;
 
 static const assoc_list name_key_alist[] = {
+#ifndef __MVS__
   { "DEL", 0x7f },
   { "ESC", '\033' },
   { "Escape", '\033' },
