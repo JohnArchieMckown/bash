@@ -42,6 +42,14 @@
 #include "vi_keymap.c"
 #endif
 
+
+#ifdef __MVS__
+#include "ebcdic.h"
+#define E2A(c) (E2Atab[(c)])
+#else
+#define E2A(c) (c)
+#endif
+
 #include "xmalloc.h"
 
 /* **************************************************************** */

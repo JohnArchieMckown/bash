@@ -65,6 +65,13 @@ extern int errno;
 /* Some standard library routines. */
 #include "readline.h"
 
+
+#ifdef __MVS__
+#include "ebcdic.h"
+#define E2A(c) (E2Atab[(c)])
+#else
+#define E2A(c) (c)
+#endif
 #include "rlprivate.h"
 #include "rlshell.h"
 #include "xmalloc.h"

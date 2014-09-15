@@ -454,7 +454,11 @@ KEYMAP_ENTRY_ARRAY vi_insertion_keymap = {
   { ISFUNC, rl_insert },			/* | */
   { ISFUNC, rl_insert },			/* } */
   { ISFUNC, rl_insert },			/* ~ */
+#ifndef __MVS__
   { ISFUNC, rl_rubout },			/* RUBOUT */
+#else
+  { ISFUNC, rl_insert },   /* " in EBCDIC */
+#endif
 
 #if KEYMAP_SIZE > 128
   /* Pure 8-bit characters (128 - 159).
