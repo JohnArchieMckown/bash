@@ -366,10 +366,10 @@ main (argc, argv, env)
   volatile int arg_index, top_level_arg_index;
 #if defined(__OPENNT)                    
   char **env;
-  env = environ;
 #endif /* __OPENNT */
+  env = environ;
 #ifdef __MVS__
-  mvs_env_kludge();
+/*mvs_env_kludge(); */ /* remove for testing */
 #endif
 
   USE_VAR(argc);

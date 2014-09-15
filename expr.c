@@ -83,6 +83,13 @@
 
 #include "shell.h"
 
+#ifdef __MVS__
+#include "ebcdic.h"
+#define E2A(c) (E2Atab[(c)])
+#else
+#define E2A(c) (c)
+#endif
+
 /* Because of the $((...)) construct, expressions may include newlines.
    Here is a macro which accepts newlines, tabs and spaces as whitespace. */
 #define cr_whitespace(c) (whitespace(c) || ((c) == '\n'))
