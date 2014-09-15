@@ -1,0 +1,858 @@
+1                   J E S 2  J O B  L O G  --  S Y S T E M  S 0 W 1  --  N O D E  S V S C J E S 2
+0
+ 13.45.17 JOB04213 ---- MONDAY,    15 SEP 2014 ----
+ 13.45.17 JOB04213  IRR010I  USERID JOARMC   IS ASSIGNED TO THIS JOB.
+ 13.45.18 JOB04213  ICH70001I JOARMC   LAST ACCESS AT 13:29:42 ON MONDAY, SEPTEMBER 15, 2014
+ 13.45.18 JOB04213  $HASP373 BASHCMPL STARTED - INIT 1    - CLASS K        - SYS S0W1
+ 13.45.18 JOB04213  +BPXM079I BPXBATCH PROCESSING IS USING THE STDPARM DD RATHER THAN THE STDIN DD.
+ 13.52.11 JOB04213  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+ 13.52.11 JOB04213  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+ 13.52.11 JOB04213  -BPXBATCH             00   3002     13       .00       .00    6.8           490  BATCH        0     0     0     0
+ 13.52.11 JOB04213  -BASHCMPL ENDED.  NAME-                     TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=   6.8
+ 13.52.11 JOB04213  $HASP395 BASHCMPL ENDED
+0------ JES2 JOB STATISTICS ------
+-  15 SEP 2014 JOB EXECUTION DATE
+-           11 CARDS READ
+-          856 SYSOUT PRINT RECORDS
+-            0 SYSOUT PUNCH RECORDS
+-          144 SYSOUT SPOOL KBYTES
+-         6.88 MINUTES EXECUTION TIME
+        1 //BASHCMPL JOB CLASS=K,                                                 JOB04213
+          //         MSGCLASS=H,
+          //         NOTIFY=&SYSUID,
+          //         TIME=NOLIMIT
+          IEFC653I SUBSTITUTION JCL - CLASS=K,MSGCLASS=H,NOTIFY=JOARMC,TIME=NOLIMIT
+        2 //BPXBATCH EXEC PGM=BPXBATCH,REGION=0M
+        3 //STDOUT   DD   SYSOUT=*
+        4 //STDIN    DD   PATH='/dev/null',PATHOPTS=(ORDONLY)
+        5 //STDERR   DD   SYSOUT=*
+        6 //STDPARM  DD   *
+ ICH70001I JOARMC   LAST ACCESS AT 13:29:42 ON MONDAY, SEPTEMBER 15, 2014
+ IEF236I ALLOC. FOR BASHCMPL BPXBATCH
+ IEF237I JES2 ALLOCATED TO STDOUT
+ IEF237I DMY  ALLOCATED TO STDIN
+ IEF237I JES2 ALLOCATED TO STDERR
+ IEF237I JES2 ALLOCATED TO STDPARM
+ BPXM079I BPXBATCH PROCESSING IS USING THE STDPARM DD RATHER THAN THE STDIN DD.
+ IEF142I BASHCMPL BPXBATCH - STEP WAS EXECUTED - COND CODE 0000
+ IEF285I   JOARMC.BASHCMPL.JOB04213.D0000102.?          SYSOUT
+ IEF285I   JOARMC.BASHCMPL.JOB04213.D0000103.?          SYSOUT
+ IEF285I   JOARMC.BASHCMPL.JOB04213.D0000101.?          SYSIN
+ IEF373I STEP/BPXBATCH/START 2014258.1345
+ IEF032I STEP/BPXBATCH/STOP  2014258.1352
+         CPU:     0 HR  00 MIN  00.06 SEC    SRB:     0 HR  00 MIN  00.01 SEC
+         VIRT:   164K  SYS:   252K  EXT:      132K  SYS:    11136K
+         ATB- REAL:                     0K  SLOTS:                     0K
+              VIRT- ALLOC:       0M SHRD:       0M
+ IEF375I  JOB/BASHCMPL/START 2014258.1345
+ IEF033I  JOB/BASHCMPL/STOP  2014258.1352
+         CPU:     0 HR  00 MIN  00.06 SEC    SRB:     0 HR  00 MIN  00.01 SEC
+rm -f shell.o eval.o y.tab.o general.o make_cmd.o print_cmd.o   dispose_cmd.o execute_cmd.o variables.o copy_cmd.o error.o  expr.o flags.o jobs.o subst.o hashcmd.o hashlib.o mailcheck.o  trap.o input.o unwind_prot.o pathexp.o sig.o test.o version.o  alias.o array.o arrayfunc.o assoc.o braces.o bracecomp.o bashhist.o  bashline.o siglist.o list.o stringlib.o locale.o findcmd.o redir.o  pcomplete.o pcomplib.o syntax.o xmalloc.o bash bashbug
+rm -f .build .made version.h
+( cd ./doc && make  clean )
+rm -f *.aux *.bak *.cp *.fn *.ky *.log *.pg *.toc *.tp *.vr *.cps  *.pgs *.bt *.bts *.rw *.rws *.fns *.kys *.tps *.vrs *.o
+rm -f core *.core
+( cd builtins && make  clean )
+rm -f builtins.o  alias.o bind.o break.o builtin.o caller.o cd.o colon.o command.o  common.o declare.o echo.o enable.o eval.o evalfile.o  evalstring.o exec.o exit.o fc.o fg_bg.o hash.o help.o history.o  jobs.o kill.o let.o mapfile.o  pushd.o read.o return.o set.o setattr.o shift.o source.o  suspend.o test.o times.o trap.o type.o ulimit.o umask.o  wait.o getopts.o shopt.o printf.o getopt.o bashgetopt.o complete.o builtext.h builtins.c psize.aux pipesize.h mkbuiltins mkbuiltins.o libbuiltins.a
+test -d helpfiles && rm -f -r helpfiles
+( cd ./support/ && make  clean )
+rm -f man2html
+for libdir in ./lib/readline  ./lib/readline ./lib/termcap ./lib/glob  ./lib/intl ./lib/tilde ./lib/malloc ./lib/sh; do  (cd $libdir && test -f Makefile && make  clean) ; done
+rm -f readline.o vi_mode.o funmap.o keymaps.o parens.o search.o  rltty.o complete.o bind.o isearch.o display.o signals.o  util.o kill.o undo.o macro.o input.o callback.o terminal.o  text.o nls.o misc.o history.o histexpand.o histfile.o histsearch.o shell.o savestring.o  mbutil.o tilde.o xmalloc.o xfree.o compat.o *.a
+( cd doc && make  clean )
+rm -f *.aux *.cp *.fn *.ky *.log *.pg *.toc *.tp *.vr *.cps *.pgs  *.fns *.kys *.tps *.vrs *.o core
+rm -f readline.o vi_mode.o funmap.o keymaps.o parens.o search.o  rltty.o complete.o bind.o isearch.o display.o signals.o  util.o kill.o undo.o macro.o input.o callback.o terminal.o  text.o nls.o misc.o history.o histexpand.o histfile.o histsearch.o shell.o savestring.o  mbutil.o tilde.o xmalloc.o xfree.o compat.o *.a
+( cd doc && make  clean )
+rm -f *.aux *.cp *.fn *.ky *.log *.pg *.toc *.tp *.vr *.cps *.pgs  *.fns *.kys *.tps *.vrs *.o core
+rm -f *.o *.a *.log *.cp *.tp *.vr *.fn *.aux *.pg *.toc
+rm -f glob.o strmatch.o smatch.o xmbsrtowcs.o gmisc.o libglob.a
+(cd doc && make  clean )
+rm -f glob.?? glob.info
+rm -f *.a *.la *.o *.obj *.lo core core.*
+rm -f libgnuintl.h libintl.h charset.alias ref-add.sed ref-del.sed
+rm -f -r .libs _libs
+rm -f tilde.o libtilde.a
+( cd doc && make  clean )
+rm -f *.o libmalloc.a
+rm -f clktck.o clock.o getenv.o oslib.o setlinebuf.o strnlen.o  itos.o zread.o zwrite.o shtty.o shmatch.o eaccess.o  netconn.o netopen.o timeval.o makepath.o pathcanon.o  pathphys.o tmpfile.o stringlist.o stringvec.o spell.o shquote.o  strtrans.o snprintf.o mailstat.o fmtulong.o  fmtullong.o fmtumax.o zcatfd.o zmapfd.o winsize.o wcsdup.o  fpurge.o zgetline.o mbscmp.o uconvert.o ufuncs.o casemod.o  input_avail.o mbscasecmp.o fnxform.o unicode.o shmbchar.o strcasestr.o strnlen.o dprintf.o strchrnul.o mktime.o mbschr.o inet_aton.o getcwd.o libsh.a
+( cd ./po/ ; make  DESTDIR= clean )
+rm -f *.insert-header
+rm -f remove-potcdate.sed
+rm -f stamp-poT
+rm -f core core.* bash.po bash.1po bash.2po *.new.po
+rm -fr *.o
+rm -f signames.h recho zecho printenv  tests/recho tests/zecho  tests/printenv xcase tests/xcase  mksignames lsignames.h  mksyntax syntax.c bashversion bashversion.o  buildversion.o mksignames.o signames.o buildsignames.o
+rm -f mksyntax
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -o mksyntax ./mksyntax.c
+rm -f syntax.c
+./mksyntax -o syntax.c
+/bin/sh ./support/mkversion.sh -b -S . -s release -d 4.2 -o newversion.h  && mv newversion.h version.h
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -DBUILDTOOL -c -o buildversion.o ./version.c
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -o bashversion ./support/bashversion.c buildversion.o
+
+	  ***********************************************************
+	  *                                                         *
+	  * GNU bash, version 4.2.0(1)-release (i370-ibm-openedition)
+	  *                                                         *
+	  ***********************************************************
+
+making ./lib/intl/libintl.a in ./lib/intl
+cp ./libgnuintl.h.in libgnuintl.h
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 bindtextdom.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 dcgettext.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 dgettext.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 gettext.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 finddomain.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 loadmsgcat.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 localealias.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 textdomain.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 l10nflist.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 explodename.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 dcigettext.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 dcngettext.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 dngettext.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 ngettext.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 plural.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 plural-exp.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 localcharset.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 relocatable.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 localename.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 log.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 osdep.c
+xlc -c -DLOCALEDIR=\"/u/joarmc/projects/bash/dist/share/locale\" -DLOCALE_ALIAS_PATH=\"/u/joarmc/projects/bash/dist/share/locale\"  -DLIBDIR=\"/u/joarmc/projects/bash/dist/libdata\" -DIN_LIBINTL  -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"/u/joarmc/projects/bash/dist/lib\" -DNO_XMALLOC  -Dset_relocation_prefix=libintl_set_relocation_prefix  -Drelocate=libintl_relocate  -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H -DSHELL -I. -I. -I/u/joarmc/projects/bash -I../.. -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 intl-compat.c
+rm -f libintl.a
+ar cru libintl.a bindtextdom.o  dcgettext.o  dgettext.o  gettext.o  finddomain.o  loadmsgcat.o  localealias.o  textdomain.o  l10nflist.o  explodename.o  dcigettext.o  dcngettext.o  dngettext.o  ngettext.o  plural.o  plural-exp.o  localcharset.o  relocatable.o  localename.o  log.o  osdep.o  intl-compat.o
+: libintl.a
+cmp libgnuintl.h libintl.h || cp libgnuintl.h libintl.h
+/bin/sh ./config.charset 'i370-ibm-openedition' > t-charset.alias
+mv t-charset.alias charset.alias
+sed -e '/^#/d' -e 's/@''PACKAGE''@/@PACKAGE@/g' ./ref-add.sin > t-ref-add.sed
+mv t-ref-add.sed ref-add.sed
+sed -e '/^#/d' -e 's/@''PACKAGE''@/@PACKAGE@/g' ./ref-del.sin > t-ref-del.sed
+mv t-ref-del.sed ref-del.sed
+rm -f shell.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c shell.c
+rm -f eval.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c eval.c
+rm -f mkbuiltins.o
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g mkbuiltins.c
+xlc  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2  -g -o mkbuiltins mkbuiltins.o
+./mkbuiltins -externfile builtext.h -structfile builtins.c  -noproduction -D .   ./alias.def ./bind.def ./break.def  ./builtin.def ./caller.def  ./cd.def ./colon.def  ./command.def ./declare.def ./echo.def  ./enable.def ./eval.def ./getopts.def  ./exec.def ./exit.def ./fc.def  ./fg_bg.def ./hash.def ./help.def  ./history.def ./jobs.def ./kill.def  ./let.def ./read.def ./return.def  ./set.def ./setattr.def ./shift.def  ./source.def ./suspend.def ./test.def  ./times.def ./trap.def ./type.def  ./ulimit.def ./umask.def ./wait.def  ./reserved.def ./pushd.def ./shopt.def  ./printf.def ./complete.def ./mapfile.def
+rm -f y.tab.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c y.tab.c
+rm -f general.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c general.c
+rm -f make_cmd.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c make_cmd.c
+rm -f print_cmd.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c print_cmd.c
+rm -f dispose_cmd.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c dispose_cmd.c
+rm -f execute_cmd.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c execute_cmd.c
+rm -f variables.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c variables.c
+rm -f copy_cmd.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c copy_cmd.c
+rm -f error.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c error.c
+rm -f expr.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c expr.c
+rm -f flags.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c flags.c
+rm -f jobs.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c jobs.c
+rm -f subst.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c subst.c
+rm -f hashcmd.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c hashcmd.c
+rm -f hashlib.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c hashlib.c
+rm -f mailcheck.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c mailcheck.c
+rm -f mksignames.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -DBUILDTOOL -c ./support/mksignames.c
+rm -f buildsignames.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -DBUILDTOOL -o buildsignames.o -c ./support/signames.c
+rm -f mksignames
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -o mksignames mksignames.o buildsignames.o
+rm -f lsignames.h
+./mksignames lsignames.h
+if cmp -s lsignames.h signames.h ; then :; else rm -f signames.h ; cp lsignames.h signames.h ; fi
+rm -f trap.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c trap.c
+rm -f input.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c input.c
+rm -f unwind_prot.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c unwind_prot.c
+rm -f pathexp.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c pathexp.c
+rm -f sig.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c sig.c
+rm -f test.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c test.c
+rm -f version.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c version.c
+rm -f alias.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c alias.c
+rm -f array.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c array.c
+rm -f arrayfunc.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c arrayfunc.c
+rm -f assoc.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c assoc.c
+rm -f braces.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c braces.c
+rm -f bracecomp.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c bracecomp.c
+rm -f bashhist.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c bashhist.c
+rm -f bashline.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c bashline.c
+rm -f siglist.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c siglist.c
+rm -f list.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c list.c
+rm -f stringlib.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c stringlib.c
+rm -f locale.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c locale.c
+rm -f findcmd.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c findcmd.c
+rm -f redir.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c redir.c
+rm -f pcomplete.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c pcomplete.c
+rm -f pcomplib.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c pcomplib.c
+rm -f syntax.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c syntax.c
+rm -f xmalloc.o
+xlc  -DPROGRAM='"bash"' -DCONF_HOSTTYPE='"i370"' -DCONF_OSTYPE='"openedition"' -DCONF_MACHTYPE='"i370-ibm-openedition"' -DCONF_VENDOR='"ibm"' -DLOCALEDIR='"/u/joarmc/projects/bash/dist/share/locale"' -DPACKAGE='"bash"' -DSHELL  -DHAVE_CONFIG_H  -I.  -I. -I./include -I./lib -I./lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c xmalloc.c
+rm -f builtins.o
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 builtins.c
+rm -f alias.o
+./mkbuiltins -D . alias.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 alias.c || ( rm -f alias.c ; exit 1 )
+rm -f alias.c
+rm -f bind.o
+./mkbuiltins -D . bind.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 bind.c || ( rm -f bind.c ; exit 1 )
+rm -f bind.c
+rm -f break.o
+./mkbuiltins -D . break.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 break.c || ( rm -f break.c ; exit 1 )
+rm -f break.c
+rm -f builtin.o
+./mkbuiltins -D . builtin.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 builtin.c || ( rm -f builtin.c ; exit 1 )
+rm -f builtin.c
+rm -f caller.o
+./mkbuiltins -D . caller.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 caller.c || ( rm -f caller.c ; exit 1 )
+rm -f caller.c
+rm -f cd.o
+./mkbuiltins -D . cd.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 cd.c || ( rm -f cd.c ; exit 1 )
+rm -f cd.c
+rm -f colon.o
+./mkbuiltins -D . colon.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 colon.c || ( rm -f colon.c ; exit 1 )
+rm -f colon.c
+rm -f command.o
+./mkbuiltins -D . command.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 command.c || ( rm -f command.c ; exit 1 )
+rm -f command.c
+rm -f common.o
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 common.c
+rm -f declare.o
+./mkbuiltins -D . declare.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 declare.c || ( rm -f declare.c ; exit 1 )
+rm -f declare.c
+rm -f echo.o
+./mkbuiltins -D . echo.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 echo.c || ( rm -f echo.c ; exit 1 )
+rm -f echo.c
+rm -f enable.o
+./mkbuiltins -D . enable.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 enable.c || ( rm -f enable.c ; exit 1 )
+rm -f enable.c
+rm -f eval.o
+./mkbuiltins -D . eval.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 eval.c || ( rm -f eval.c ; exit 1 )
+rm -f eval.c
+rm -f evalfile.o
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 evalfile.c
+rm -f evalstring.o
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 evalstring.c
+rm -f exec.o
+./mkbuiltins -D . exec.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 exec.c || ( rm -f exec.c ; exit 1 )
+rm -f exec.c
+rm -f exit.o
+./mkbuiltins -D . exit.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 exit.c || ( rm -f exit.c ; exit 1 )
+rm -f exit.c
+rm -f fc.o
+./mkbuiltins -D . fc.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 fc.c || ( rm -f fc.c ; exit 1 )
+rm -f fc.c
+rm -f fg_bg.o
+./mkbuiltins -D . fg_bg.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 fg_bg.c || ( rm -f fg_bg.c ; exit 1 )
+rm -f fg_bg.c
+rm -f hash.o
+./mkbuiltins -D . hash.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 hash.c || ( rm -f hash.c ; exit 1 )
+rm -f hash.c
+rm -f help.o
+./mkbuiltins -D . help.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 help.c || ( rm -f help.c ; exit 1 )
+rm -f help.c
+rm -f history.o
+./mkbuiltins -D . history.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 history.c || ( rm -f history.c ; exit 1 )
+rm -f history.c
+rm -f jobs.o
+./mkbuiltins -D . jobs.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 jobs.c || ( rm -f jobs.c ; exit 1 )
+rm -f jobs.c
+rm -f kill.o
+./mkbuiltins -D . kill.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 kill.c || ( rm -f kill.c ; exit 1 )
+rm -f kill.c
+rm -f let.o
+./mkbuiltins -D . let.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 let.c || ( rm -f let.c ; exit 1 )
+rm -f let.c
+rm -f mapfile.o
+./mkbuiltins -D . mapfile.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 mapfile.c || ( rm -f mapfile.c ; exit 1 )
+rm -f mapfile.c
+rm -f pushd.o
+./mkbuiltins -D . pushd.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 pushd.c || ( rm -f pushd.c ; exit 1 )
+rm -f pushd.c
+rm -f read.o
+./mkbuiltins -D . read.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 read.c || ( rm -f read.c ; exit 1 )
+rm -f read.c
+rm -f return.o
+./mkbuiltins -D . return.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 return.c || ( rm -f return.c ; exit 1 )
+rm -f return.c
+rm -f set.o
+./mkbuiltins -D . set.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 set.c || ( rm -f set.c ; exit 1 )
+rm -f set.c
+rm -f setattr.o
+./mkbuiltins -D . setattr.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 setattr.c || ( rm -f setattr.c ; exit 1 )
+rm -f setattr.c
+rm -f shift.o
+./mkbuiltins -D . shift.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 shift.c || ( rm -f shift.c ; exit 1 )
+rm -f shift.c
+rm -f source.o
+./mkbuiltins -D . source.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 source.c || ( rm -f source.c ; exit 1 )
+rm -f source.c
+rm -f suspend.o
+./mkbuiltins -D . suspend.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 suspend.c || ( rm -f suspend.c ; exit 1 )
+rm -f suspend.c
+rm -f test.o
+./mkbuiltins -D . test.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 test.c || ( rm -f test.c ; exit 1 )
+rm -f test.c
+rm -f times.o
+./mkbuiltins -D . times.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 times.c || ( rm -f times.c ; exit 1 )
+rm -f times.c
+rm -f trap.o
+./mkbuiltins -D . trap.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 trap.c || ( rm -f trap.c ; exit 1 )
+rm -f trap.c
+rm -f type.o
+./mkbuiltins -D . type.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 type.c || ( rm -f type.c ; exit 1 )
+rm -f type.c
+xlc  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -o psize.aux ./psize.c
+/bin/sh ./psize.sh > pipesize.h
+rm -f ulimit.o
+./mkbuiltins -D . ulimit.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 ulimit.c || ( rm -f ulimit.c ; exit 1 )
+rm -f ulimit.c
+rm -f umask.o
+./mkbuiltins -D . umask.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 umask.c || ( rm -f umask.c ; exit 1 )
+rm -f umask.c
+rm -f wait.o
+./mkbuiltins -D . wait.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 wait.c || ( rm -f wait.c ; exit 1 )
+rm -f wait.c
+rm -f getopts.o
+./mkbuiltins -D . getopts.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 getopts.c || ( rm -f getopts.c ; exit 1 )
+rm -f getopts.c
+rm -f shopt.o
+./mkbuiltins -D . shopt.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 shopt.c || ( rm -f shopt.c ; exit 1 )
+rm -f shopt.c
+rm -f printf.o
+./mkbuiltins -D . printf.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 printf.c || ( rm -f printf.c ; exit 1 )
+rm -f printf.c
+rm -f getopt.o
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 getopt.c
+rm -f bashgetopt.o
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 bashgetopt.c
+rm -f complete.o
+./mkbuiltins -D . complete.def
+xlc -c  -DHAVE_CONFIG_H -DSHELL   -I. -I..  -I.. -I../include -I../lib -I. -I../lib/intl -I/u/joarmc/projects/bash/lib/intl -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 complete.c || ( rm -f complete.c ; exit 1 )
+rm -f complete.c
+rm -f libbuiltins.a
+ar cr libbuiltins.a builtins.o  alias.o bind.o break.o builtin.o caller.o cd.o colon.o command.o  common.o declare.o echo.o enable.o eval.o evalfile.o  evalstring.o exec.o exit.o fc.o fg_bg.o hash.o help.o history.o  jobs.o kill.o let.o mapfile.o  pushd.o read.o return.o set.o setattr.o shift.o source.o  suspend.o test.o times.o trap.o type.o ulimit.o umask.o  wait.o getopts.o shopt.o printf.o getopt.o bashgetopt.o complete.o
+: libbuiltins.a
+making ./lib/glob/libglob.a in ./lib/glob
+( cd /u/joarmc/projects/bash && make  pathnames.h )
+rm -f glob.o
+xlc -c  -DHAVE_CONFIG_H -DSHELL -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I../.. -I../.. -I../../include -I../../lib   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 glob.c
+rm -f strmatch.o
+xlc -c  -DHAVE_CONFIG_H -DSHELL -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I../.. -I../.. -I../../include -I../../lib   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 strmatch.c
+rm -f smatch.o
+xlc -c  -DHAVE_CONFIG_H -DSHELL -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I../.. -I../.. -I../../include -I../../lib   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 smatch.c
+rm -f xmbsrtowcs.o
+xlc -c  -DHAVE_CONFIG_H -DSHELL -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I../.. -I../.. -I../../include -I../../lib   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 xmbsrtowcs.c
+rm -f gmisc.o
+xlc -c  -DHAVE_CONFIG_H -DSHELL -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I../.. -I../.. -I../../include -I../../lib   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 gmisc.c
+rm -f -f libglob.a
+ar cr libglob.a glob.o strmatch.o smatch.o xmbsrtowcs.o gmisc.o
+test -n ":" && : libglob.a
+making ./lib/sh/libsh.a in ./lib/sh
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 clktck.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 clock.c
+( cd /u/joarmc/projects/bash && make  pathnames.h )
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 getenv.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 oslib.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 setlinebuf.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 strnlen.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 itos.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 zread.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 zwrite.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 shtty.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 shmatch.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 eaccess.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 netconn.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 netopen.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 timeval.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 makepath.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 pathcanon.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 pathphys.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 tmpfile.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 stringlist.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 stringvec.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 spell.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 shquote.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 strtrans.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 snprintf.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 mailstat.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 fmtulong.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 fmtullong.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 fmtumax.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 zcatfd.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 zmapfd.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 winsize.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 wcsdup.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 fpurge.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 zgetline.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 mbscmp.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 uconvert.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 ufuncs.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 casemod.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 input_avail.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 mbscasecmp.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 fnxform.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 unicode.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 shmbchar.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 strcasestr.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 dprintf.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 strchrnul.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 mktime.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 mbschr.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 inet_aton.c
+xlc -c  -I. -I../.. -I../.. -I../../lib -I../../include -I. -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 getcwd.c
+rm -f libsh.a
+ar cr libsh.a clktck.o clock.o getenv.o oslib.o setlinebuf.o strnlen.o  itos.o zread.o zwrite.o shtty.o shmatch.o eaccess.o  netconn.o netopen.o timeval.o makepath.o pathcanon.o  pathphys.o tmpfile.o stringlist.o stringvec.o spell.o shquote.o  strtrans.o snprintf.o mailstat.o fmtulong.o  fmtullong.o fmtumax.o zcatfd.o zmapfd.o winsize.o wcsdup.o  fpurge.o zgetline.o mbscmp.o uconvert.o ufuncs.o casemod.o  input_avail.o mbscasecmp.o fnxform.o unicode.o shmbchar.o strcasestr.o strnlen.o dprintf.o strchrnul.o mktime.o mbschr.o inet_aton.o getcwd.o
+test -n ":" && : libsh.a
+making ./lib/readline/libreadline.a in ./lib/readline
+rm -f readline.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 readline.c
+rm -f vi_mode.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 vi_mode.c
+rm -f funmap.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 funmap.c
+rm -f keymaps.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 keymaps.c
+rm -f parens.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 parens.c
+rm -f search.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 search.c
+rm -f rltty.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 rltty.c
+rm -f complete.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 complete.c
+rm -f bind.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 bind.c
+rm -f isearch.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 isearch.c
+rm -f display.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 display.c
+rm -f signals.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 signals.c
+rm -f util.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 util.c
+rm -f kill.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 kill.c
+rm -f undo.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 undo.c
+rm -f macro.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 macro.c
+rm -f input.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 input.c
+rm -f callback.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 callback.c
+rm -f terminal.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 terminal.c
+rm -f text.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 text.c
+rm -f nls.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 nls.c
+rm -f misc.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 misc.c
+rm -f history.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 history.c
+rm -f histexpand.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 histexpand.c
+rm -f histfile.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 histfile.c
+rm -f histsearch.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 histsearch.c
+rm -f shell.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 shell.c
+rm -f savestring.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 savestring.c
+rm -f mbutil.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 mbutil.c
+rm -f tilde.o
+xlc -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -DREADLINE_LIBRARY -c ./tilde.c
+rm -f xmalloc.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 xmalloc.c
+rm -f xfree.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 xfree.c
+rm -f compat.o
+xlc -c -DHAVE_CONFIG_H -DSHELL  -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -I. -I/u/joarmc/projects/bash -I../.. -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 compat.c
+rm -f libreadline.a
+ar cr libreadline.a readline.o vi_mode.o funmap.o keymaps.o parens.o search.o  rltty.o complete.o bind.o isearch.o display.o signals.o  util.o kill.o undo.o macro.o input.o callback.o terminal.o  text.o nls.o misc.o history.o histexpand.o histfile.o histsearch.o shell.o savestring.o  mbutil.o tilde.o xmalloc.o xfree.o compat.o
+test -n ":" && : libreadline.a
+making ./lib/readline/libhistory.a in ./lib/readline
+rm -f libhistory.a
+ar cr libhistory.a history.o histexpand.o histfile.o histsearch.o shell.o savestring.o  mbutil.o xmalloc.o xfree.o
+test -n ":" && : libhistory.a
+making ./lib/tilde/libtilde.a in ./lib/tilde
+xlc -c  -DHAVE_CONFIG_H -DSHELL -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2  -I. -I../.. -I../.. -I../../include -I../../lib  -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 tilde.c
+rm -f libtilde.a
+ar cr libtilde.a tilde.o
+test -n ":" && : libtilde.a
+xlc  -I. -I../.. -I../.. -I../../include -I../../lib -I../../lib/intl -I/u/joarmc/projects/bash/lib/intl -DHAVE_CONFIG_H -DSHELL   -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -DRCHECK -Dbotch=programming_error -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -c ./alloca.c
+rm -f libmalloc.a
+ar cr libmalloc.a alloca.o
+test -n ":" && : libmalloc.a
+rm -f bash
+ xlc -L./builtins -L./lib/readline -L./lib/readline -L./lib/glob  -L./lib/tilde -L./lib/malloc -L./lib/sh    -g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2 -o bash shell.o eval.o y.tab.o general.o make_cmd.o print_cmd.o   dispose_cmd.o execute_cmd.o variables.o copy_cmd.o error.o  expr.o flags.o jobs.o subst.o hashcmd.o hashlib.o mailcheck.o  trap.o input.o unwind_prot.o pathexp.o sig.o test.o version.o  alias.o array.o arrayfunc.o assoc.o braces.o bracecomp.o bashhist.o  bashline.o siglist.o list.o stringlib.o locale.o findcmd.o redir.o  pcomplete.o pcomplib.o syntax.o xmalloc.o -lbuiltins -lglob -lsh -lreadline -lhistory -lcurses  -ltilde -lmalloc lib/intl/libintl.a
+ls -l bash
+-rwxr-xr-x   1 JOARMC   IPGROUP  5869568 Sep 15 12:52 bash
+size bash
+make: Makefile: line 545: Warning -- FSUM9433 Duplicate entry [config.h] in prerequisite list
+make: Makefile: line 570: Warning -- FSUM9433 Duplicate entry [config.h] in prerequisite list
+make: Makefile: line 160: Warning -- FSUM9433 Duplicate entry [builtins.o] in prerequisite list
+FSUM8226 make: Error code 1 (Ignored)
+cd: doc: EDC5129I No such file or directory.
+FSUM8226 make: Error code 1 (Ignored)
+make: Makefile: line 115: Warning -- FSUM9433 Duplicate entry [strnlen.o] in prerequisite list
+make: Makefile: line 545: Warning -- FSUM9433 Duplicate entry [config.h] in prerequisite list
+make: Makefile: line 570: Warning -- FSUM9433 Duplicate entry [config.h] in prerequisite list
+INFORMATIONAL CCN4108 ./gettextP.h:72    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./gettextP.h:72    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./gettextP.h:72    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./gettextP.h:72    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./gettextP.h:72    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./gettextP.h:72    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./hash-string.h:40    The use of keyword '__inline__' is non-portable.
+WARNING CCN3236 ./loadmsgcat.c:474   Macro name alloca has been redefined.
+INFORMATIONAL CCN4108 ./gettextP.h:72    The use of keyword '__inline__' is non-portable.
+WARNING CCN3236 ./localealias.c:111   Macro name alloca has been redefined.
+INFORMATIONAL CCN4108 ./gettextP.h:72    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./l10nflist.c:175   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./gettextP.h:72    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./hash-string.h:40    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./gettextP.h:72    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./gettextP.h:72    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./gettextP.h:72    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 /usr/src/local/bash/bash-20080814/lib/intl/plural.y:61    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 /usr/src/local/bash/bash-20080814/lib/intl/plural.y:62    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 /usr/src/local/bash/bash-20080814/lib/intl/plural.y:67    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 /usr/src/local/bash/bash-20080814/lib/intl/plural.y:108   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 /usr/src/local/bash/bash-20080814/lib/intl/plural.y:115   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 /usr/src/local/bash/bash-20080814/lib/intl/plural.y:139   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./gettextP.h:72    The use of keyword '__inline__' is non-portable.
+cmp: libintl.h: EDC5129I No such file or directory.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+make: Makefile: line 160: Warning -- FSUM9433 Duplicate entry [builtins.o] in prerequisite list
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+WARNING CCN3296 ./parse.y:81    #include file <sys/param.h> not found.
+WARNING CCN3343 ./parse.y:1345  Redeclaration of init_yy_io differs from previous declaration on line 94 of "./input.h".
+INFORMATIONAL CCN3379 ./parse.y:1345  Prototype for function init_yy_io must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./parse.y:1345  Parameter 3 has type "enum stream_type" which promotes to "int".
+WARNING CCN3343 ./parse.y:1734  Redeclaration of stream_on_stack differs from previous declaration on line 101 of "./input.h".
+INFORMATIONAL CCN3379 ./parse.y:1734  Prototype for function stream_on_stack must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./parse.y:1734  Parameter 1 has type "enum stream_type" which promotes to "int".
+WARNING CCN3296 ./general.c:25    #include file <sys/param.h> not found.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+WARNING CCN3343 ./make_cmd.c:180   Redeclaration of make_command differs from previous declaration on line 38 of "./make_cmd.h".
+INFORMATIONAL CCN3379 ./make_cmd.c:180   Prototype for function make_command must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./make_cmd.c:180   Parameter 1 has type "enum command_type" which promotes to "int".
+WARNING CCN3343 ./make_cmd.c:209   Redeclaration of make_for_or_select differs from previous declaration on line 67 of "./make_cmd.c".
+INFORMATIONAL CCN3379 ./make_cmd.c:209   Prototype for function make_for_or_select must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./make_cmd.c:209   Parameter 1 has type "enum command_type" which promotes to "int".
+WARNING CCN3343 ./make_cmd.c:405   Redeclaration of make_until_or_while differs from previous declaration on line 71 of "./make_cmd.c".
+INFORMATIONAL CCN3379 ./make_cmd.c:405   Prototype for function make_until_or_while must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./make_cmd.c:405   Parameter 1 has type "enum command_type" which promotes to "int".
+WARNING CCN3343 ./make_cmd.c:676   Redeclaration of make_redirection differs from previous declaration on line 50 of "./make_cmd.h".
+INFORMATIONAL CCN3379 ./make_cmd.c:676   Prototype for function make_redirection must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./make_cmd.c:676   Parameter 2 has type "enum r_instruction" which promotes to "int".
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3296 ./execute_cmd.c:37    #include file <sys/param.h> not found.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3343 ./execute_cmd.c:400   Redeclaration of shell_control_structure differs from previous declaration on line 127 of "./execute_cmd.c".
+INFORMATIONAL CCN3379 ./execute_cmd.c:400   Prototype for function shell_control_structure must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./execute_cmd.c:400   Parameter 1 has type "enum command_type" which promotes to "int".
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ./variables.c:271   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./variables.c:283   The use of keyword '__inline__' is non-portable.
+WARNING CCN3068 ./variables.c:2480  Operation between types "char*" and "char**" is not allowed.
+INFORMATIONAL CCN4108 ./variables.c:3397  The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./variables.c:4243  The use of keyword '__inline__' is non-portable.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3068 ./expr.c:985   Operation between types "struct lvalue*" and "char*" is not allowed.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3296 ./jobs.c:48    #include file <sys/param.h> not found.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3343 ./jobs.c:2682  Redeclaration of most_recent_job_in_state differs from previous declaration on line 248 of "./jobs.c".
+INFORMATIONAL CCN3379 ./jobs.c:2682  Prototype for function most_recent_job_in_state must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./jobs.c:2682  Parameter 2 has type "enum {...}" which promotes to "int".
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./subst.c:211   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./subst.c:232   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./subst.c:233   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./subst.c:989   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./subst.c:1014  The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./subst.c:3056  The use of keyword '__inline__' is non-portable.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3296 ./mailcheck.c:27    #include file <sys/param.h> not found.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ./unwind_prot.c:86    The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./unwind_prot.c:267   The use of keyword '__inline__' is non-portable.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./pathexp.c:120   The use of keyword '__inline__' is non-portable.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3068 ./alias.c:142   Operation between types "char*" and "struct alias*" is not allowed.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ./include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3343 ./redir.c:418   Redeclaration of here_document_to_fd differs from previous declaration on line 80 of "./redir.c".
+INFORMATIONAL CCN3379 ./redir.c:418   Prototype for function here_document_to_fd must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./redir.c:418   Parameter 2 has type "enum r_instruction" which promotes to "int".
+WARNING CCN3343 ./redir.c:504   Redeclaration of redir_special_open differs from previous declaration on line 82 of "./redir.c".
+INFORMATIONAL CCN3379 ./redir.c:504   Prototype for function redir_special_open must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./redir.c:504   Parameter 5 has type "enum r_instruction" which promotes to "int".
+WARNING CCN3343 ./redir.c:562   Redeclaration of noclobber_open differs from previous declaration on line 83 of "./redir.c".
+INFORMATIONAL CCN3379 ./redir.c:562   Prototype for function noclobber_open must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./redir.c:562   Parameter 4 has type "enum r_instruction" which promotes to "int".
+WARNING CCN3343 ./redir.c:614   Redeclaration of redir_open differs from previous declaration on line 84 of "./redir.c".
+INFORMATIONAL CCN3379 ./redir.c:614   Prototype for function redir_open must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./redir.c:614   Parameter 4 has type "enum r_instruction" which promotes to "int".
+WARNING CCN3343 ./redir.c:1121  Redeclaration of add_undo_redirect differs from previous declaration on line 71 of "./redir.c".
+INFORMATIONAL CCN3379 ./redir.c:1121  Prototype for function add_undo_redirect must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./redir.c:1121  Parameter 2 has type "enum r_instruction" which promotes to "int".
+WARNING CCN3343 ./redir.c:1230  Redeclaration of stdin_redirection differs from previous declaration on line 74 of "./redir.c".
+INFORMATIONAL CCN3379 ./redir.c:1230  Prototype for function stdin_redirection must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./redir.c:1230  Parameter 1 has type "enum r_instruction" which promotes to "int".
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3068 ./pcomplib.c:193   Operation between types "char*" and "struct compspec*" is not allowed.
+make: Makefile: line 160: Warning -- FSUM9433 Duplicate entry [builtins.o] in prerequisite list
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3296 ./cd.def:35    #include file <sys/param.h> not found.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3068 ./enable.def:307   Operation between types "void*" and "int" is not allowed.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3296 ./fc.def:56    #include file <sys/param.h> not found.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3296 ./pushd.def:119   #include file <sys/param.h> not found.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3296 ./ulimit.def:74    #include file <sys/param.h> not found.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ../include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ./../shell.h:112   Macro name CTLNUL has been redefined.
+make: Makefile: line 545: Warning -- FSUM9433 Duplicate entry [config.h] in prerequisite list
+make: Makefile: line 570: Warning -- FSUM9433 Duplicate entry [config.h] in prerequisite list
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+make: Makefile: line 115: Warning -- FSUM9433 Duplicate entry [strnlen.o] in prerequisite list
+WARNING CCN3296 ./clktck.c:24    #include file <sys/param.h> not found.
+make: Makefile: line 545: Warning -- FSUM9433 Duplicate entry [config.h] in prerequisite list
+make: Makefile: line 570: Warning -- FSUM9433 Duplicate entry [config.h] in prerequisite list
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3296 ./oslib.c:25    #include file <sys/param.h> not found.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3296 ./pathcanon.c:25    #include file <sys/param.h> not found.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3296 ./pathphys.c:25    #include file <sys/param.h> not found.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3296 ./spell.c:34    #include file <sys/param.h> not found.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+WARNING CCN3296 ./mailstat.c:32    #include file <sys/param.h> not found.
+WARNING CCN3068 ./wcsdup.c:38    Operation between types "unsigned short*" and "char*" is not allowed.
+WARNING CCN3218 ./fpurge.c:230   Unknown preprocessing directive #warning.
+WARNING CCN3236 ../../shell.h:112   Macro name CTLNUL has been redefined.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:240   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:261   The use of keyword '__inline__' is non-portable.
+INFORMATIONAL CCN4108 ../../include/shmbchar.h:318   The use of keyword '__inline__' is non-portable.
+WARNING CCN3296 ./inet_aton.c:70    #include file <sys/param.h> not found.
+ar: FSUM9942 "strnlen.o" ignored, same basename as "strnlen.o".
+WARNING CCN3068 ./vi_mode.c:1009  Operation between types "struct __rl_vimotion_context*" and "char*" is not allowed.
+WARNING CCN3343 ./util.c:84    Redeclaration of _rl_walphabetic differs from previous declaration on line 109 of "./rlmbutil.h".
+INFORMATIONAL CCN3379 ./util.c:84    Prototype for function _rl_walphabetic must contain only promoted types if prototype and nonprototype declarations are mixed.
+INFORMATIONAL CCN3380 ./util.c:84    Parameter 1 has type "unsigned short" which promotes to "int".
+WARNING CCN3068 ./history.c:410   Operation between types "char*" and "char**" is not allowed.
+WARNING CCN3068 ./history.c:411   Operation between types "char*" and "char**" is not allowed.
+WARNING CCN3068 ./history.c:421   Operation between types "char*" and "char**" is not allowed.
+WARNING CCN3068 ./history.c:425   Operation between types "char*" and "char**" is not allowed.
+WARNING CCN3068 ./history.c:431   Operation between types "char*" and "char**" is not allowed.
+WARNING CCN3236 ./alloca.c:66    Macro name NULL has been redefined.
+make: Error -- size: EDC5129I No such file or directory.
+FSUM8226 make: Error code -1 (Ignored)
