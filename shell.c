@@ -1,6 +1,6 @@
 /* shell.c -- GNU's idea of the POSIX shell specification. */
 
-/* Copyright (C) 1987-2010 Free Software Foundation, Inc.
+/* Copyright (C) 1987-2012 Free Software Foundation, Inc.
 
    This file is part of GNU Bash, the Bourne Again SHell.
 
@@ -366,8 +366,8 @@ main (argc, argv, env)
   volatile int arg_index, top_level_arg_index;
 #if defined(__OPENNT)                    
   char **env;
-#endif /* __OPENNT */
   env = environ;
+#endif /* __OPENNT */
 #ifdef __MVS__
 /*mvs_env_kludge(); */ /* remove for testing */
 #endif
