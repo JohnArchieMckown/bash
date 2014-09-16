@@ -344,7 +344,7 @@ _cygwin32_check_tmp ()
 }
 #endif /* __CYGWIN__ */
 
-#if defined (NO_MAIN_ENV_ARG)
+#if defined (NO_MAIN_ENV_ARG) __ defined(__MVS__)
 /* systems without third argument to main() */
 int
 main (argc, argv)
