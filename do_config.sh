@@ -23,6 +23,6 @@
 --disable-mem-scramble \
 --without-libintl-prefix \
 --prefix=/u/joarmc/projects/bash/dist \
-CC=xlc CFLAGS='-g -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2' \
-       CPPFLAGS='-qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2'
+CC=xlc CFLAGS='-g -qchars=unsigned -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2' \
+       CPPFLAGS='-qchars=unsigned -qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -D_LARGE_FILES -D_ALL_SOURCE -D_ISOC99_SOURCE -O2'
 #C=xlc CFLAGS='-qtarg=zosv1r12 -qskipsrc=hide -qarch=5 -qtune=7 -qlanglvl=extended:longlong -qagg -qsource -qshowmacros -qshow -qexpmac -D_ALL_SOURCE -O2'
