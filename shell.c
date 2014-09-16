@@ -344,12 +344,12 @@ _cygwin32_check_tmp ()
 }
 #endif /* __CYGWIN__ */
 
-#if defined (NO_MAIN_ENV_ARG) __ defined(__MVS__)
+#if defined (NO_MAIN_ENV_ARG) || defined(__MVS__)
 /* systems without third argument to main() */
 int
 main (argc, argv)
      int argc;
-     char **argv;
+     char **argv;       
 #else /* !NO_MAIN_ENV_ARG */
 int
 main (argc, argv, env)
@@ -364,12 +364,11 @@ main (argc, argv, env)
 #endif
   volatile int locally_skip_execution;
   volatile int arg_index, top_level_arg_index;
-#if defined(__OPENNT)                    
+#if defined(__OPENNT) || defined(__MVS__)
   char **env;
   env = environ;
 #endif /* __OPENNT */
-#if defined (NO_MAIN_ENV_ARG) || defined(__MVS__)
-  env = environ;
+#if defined(__MVS__)                             
 /*mvs_env_kludge(); */ /* remove for testing */
 #endif
 
