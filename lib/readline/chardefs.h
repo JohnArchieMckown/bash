@@ -119,7 +119,7 @@ extern char A2Etab[256];     /* ascii   to ebcdic  table */
 #endif
 
 
-#if defined STDC_HEADERS || (!defined (isascii) && !defined (HAVE_ISASCII))
+#if defined STDC_HEADERS || (!defined (isascii) && !defined (HAVE_ISASCII)) || defined(__MVS__)
 #  define IN_CTYPE_DOMAIN(c) 1
 #else
 #  define IN_CTYPE_DOMAIN(c) isascii(c)
