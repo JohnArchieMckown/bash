@@ -368,7 +368,8 @@ main (argc, argv, env)
   char **env;
   env = environ;
 #endif /* __OPENNT */
-#ifdef __MVS__
+#if defined (NO_MAIN_ENV_ARG) || defined(__MVS__)
+  env = environ;
 /*mvs_env_kludge(); */ /* remove for testing */
 #endif
 
