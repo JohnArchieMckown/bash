@@ -14,7 +14,7 @@ echo 'echo "testb"' > testb/foo
 
 chmod 655 testa/foo
 chmod 755 testb/foo
-
+cd - # need to go back to original directory for \$THIS_SH to run properly
 PATH=$TMPDIR/testa:$TMPDIR/testb $THIS_SH -c foo
 
 rm -rf testa testb

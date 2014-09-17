@@ -8,7 +8,7 @@ echo $LINE
 
 wait $COPROC_PID
 
-coproc REFLECT { cat - ; }
+coproc REFLECT { cat -u - ; } # -u added for z/OS testing "unbuffered"
 
 echo $REFLECT_PID
 echo ${REFLECT[@]}
