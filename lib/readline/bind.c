@@ -57,12 +57,12 @@ extern int errno;
 /* System-specific feature definitions and include files. */
 #include "rldefs.h"
 
-#ifdef __MVS__
-#include "ebcdic.h"
-#define E2A(c) (E2Atab[(c)])
-#else
-#define E2A(c) (c)
-#endif
+//#ifdef __MVS__
+//#include "ebcdic.h"
+//#define E2A(c) (E2Atab[(c)])
+//#else
+//#define E2A(c) (c)
+//#endif
 
 /* Some standard library routines. */
 #include "readline.h"
@@ -125,21 +125,21 @@ rl_bind_key (key, function)
 
   if (META_CHAR (key) && _rl_convert_meta_chars_to_ascii)
     {
-      if (_rl_keymap[E2A(ESC)].type == ISKMAP)
+      if (_rl_keymap[ESC].type == ISKMAP)
 	{
 	  Keymap escmap;
 
-	  escmap = FUNCTION_TO_KEYMAP (_rl_keymap, E2A(ESC));
+	  escmap = FUNCTION_TO_KEYMAP (_rl_keymap, ESC);
 	  key = UNMETA (key);
-	  escmap[E2A(key)].type = ISFUNC;
-	  escmap[E2A(key)].function = function;
+	  escmap[key].type = ISFUNC;
+	  escmap[key].function = function;
 	  return (0);
 	}
       return (key);
     }
 
-  _rl_keymap[E2A(key)].type = ISFUNC;
-  _rl_keymap[E2A(key)].function = function;
+  _rl_keymap[key].type = ISFUNC;
+  _rl_keymap[key].function = function;
   rl_binding_keymap = _rl_keymap;
   return (0);
 }
@@ -504,7 +504,7 @@ rl_translate_keyseq (seq, array, len)
 		  array[l++] = (seq[i] == '?') ? RUBOUT : CTRL (_rl_to_upper (seq[i]));
 		}
 	      continue;
-	    }	      
+	    }	
 
 	  /* Translate other backslash-escaped characters.  These are the
 	     same escape sequences that bash's `echo' and `printf' builtins
@@ -883,7 +883,7 @@ _rl_read_init_file (filename, include_level)
   RL_CHECK_SIGNALS ();
   if (buffer == 0)
     return (errno);
-  
+
   if (include_level == 0 && filename != last_readline_init_file)
     {
       FREE (last_readline_init_file);
@@ -1113,7 +1113,7 @@ parser_include (args)
 
   return r;
 }
-  
+
 /* Associate textual names with actual functions. */
 static const struct {
   const char * const name;
@@ -1769,7 +1769,7 @@ sv_isrchterm (value)
   xfree (v);
   return 0;
 }
-      
+
 /* Return the character which matches NAME.
    For example, `Space' returns ' '. */
 
@@ -1860,7 +1860,7 @@ rl_get_keymap_name (map)
       return ((char *)keymap_names[i].name);
   return ((char *)NULL);
 }
-  
+
 void
 rl_set_keymap (map)
      Keymap map;
@@ -2237,7 +2237,7 @@ _rl_macro_dumper_internal (print_readably, map, prefix)
 	  break;
 	case ISKMAP:
 	  prefix_len = prefix ? strlen (prefix) : 0;
-	  if (key == E2A(ESC))
+	  if (key == ESC)
 	    {
 	      keyname = (char *)xmalloc (3 + prefix_len);
 	      if (prefix)
