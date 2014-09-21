@@ -41,6 +41,8 @@
 #ifdef __MVS__
 extern char E2Atab[256];     /* ebcdic  to ascii   table */
 extern char A2Etab[256];     /* ascii   to ebcdic  table */
+extern char E2Ctab[256];     /* ebcdic  to control table */
+extern char C2Etab[256];     /* control to ebcdic  table */
 #define E2A(c) (E2Atab[(c)])
 #define A2E(c) (A2Etab[(c)])
 #else
@@ -68,8 +70,8 @@ extern char A2Etab[256];     /* ascii   to ebcdic  table */
 #define largest_char 255		    /* Largest character value. */
 
 #ifdef __MVS__
-#define CTRL_CHAR(c) ((E2A(c) < control_character_threshold) && ((E2A(c) & 0x80) >= 0))
-#define META_CHAR(c) ((E2A(c) > meta_character_threshold) && (E2A(c) <= largest_char))
+#define CTRL_CHAR(c) (E2A(c) < control_character_threshold && ((E2A(c) & 0x80) == 0))
+#define META_CHAR(c) (E2A(c) > meta_character_threshold && E2A(c) <= largest_char)
 
 #define CTRL(c) A2E(E2A(c) & control_character_mask)
 #define META(c) A2E(E2A(c) | meta_character_bit)
