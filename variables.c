@@ -347,12 +347,10 @@ initialize_shell_variables (env, privmode)
 	  temp_string[char_index] = ' ';
 	  strcpy (temp_string + char_index + 1, string);
 
-	  parse_and_execute (temp_string, name, SEVAL_NONINT|SEVAL_NOHIST);
-
-	  /* Ancient backwards compatibility.  Old versions of bash exported
-	     functions like name()=() {...} */
-	  if (name[char_index - 1] == ')' && name[char_index - 2] == '(')
-	    name[char_index - 2] = '\0';
+	  /* Don't import function names that are invalid identifiers from the
+	     environment. */
+	  if (legal_identifier (name))
+	    parse_and_execute (temp_string, name, SEVAL_NONINT|SEVAL_NOHIST|SEVAL_FUNCDEF|SEVAL_ONECMD);
 
 	  if (temp_var = find_function (name))
 	    {
@@ -361,10 +359,6 @@ initialize_shell_variables (env, privmode)
 	    }
 	  else
 	    report_error (_("error importing function definition for `%s'"), name);
-
-	  /* ( */
-	  if (name[char_index - 1] == ')' && name[char_index - 2] == '\0')
-	    name[char_index - 2] = '(';		/* ) */
 	}
 #if defined (ARRAY_VARS)
 #  if 0
@@ -3653,6 +3647,22 @@ n_shell_variables ()
   return n;
 }
 
+int
+chkexport (name)
+     char *name;
+{
+  SHELL_VAR *v;
+
+  v = find_variable (name);
+  if (v && exported_p (v))
+    {
+      array_needs_making = 1;
+      maybe_make_export_env ();
+      return 1;
+    }
+  return 0;
+}
+
 void
 maybe_make_export_env ()
 {
@@ -4214,7 +4224,7 @@ static struct name_and_function special_vars[] = {
   { "TEXTDOMAIN", sv_locale },
   { "TEXTDOMAINDIR", sv_locale },
 
-#if defined (HAVE_TZSET) && defined (PROMPT_STRING_DECODE)
+#if defined (HAVE_TZSET)
   { "TZ", sv_tz },
 #endif
 
@@ -4558,12 +4568,13 @@ sv_histtimefmt (name)
 }
 #endif /* HISTORY */
 
-#if defined (HAVE_TZSET) && defined (PROMPT_STRING_DECODE)
+#if defined (HAVE_TZSET)
 void
 sv_tz (name)
      char *name;
 {
-  tzset ();
+  if (chkexport (name))
+    tzset ();
 }
 #endif
 
