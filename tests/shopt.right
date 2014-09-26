@@ -12,7 +12,6 @@ shopt -u compat31
 shopt -u compat32
 shopt -u compat40
 shopt -u compat41
-shopt -u direxpand
 shopt -u dirspell
 shopt -u dotglob
 shopt -u execfail
@@ -69,7 +68,6 @@ shopt -u compat31
 shopt -u compat32
 shopt -u compat40
 shopt -u compat41
-shopt -u direxpand
 shopt -u dirspell
 shopt -u dotglob
 shopt -u execfail
@@ -103,7 +101,6 @@ compat31       	off
 compat32       	off
 compat40       	off
 compat41       	off
-direxpand      	off
 dirspell       	off
 dotglob        	off
 execfail       	off

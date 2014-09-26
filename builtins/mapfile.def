@@ -195,9 +195,13 @@ mapfile (fd, line_count_goal, origin, nskip, callback_quantum, callback, array_n
   /* Reset the buffer for bash own stream */
   interrupt_immediately++;
   for (array_index = origin, line_count = 1; 
- 	zgetline (fd, &line, &line_length, unbuffered_read) != -1;
-	array_index++) 
+       zgetline (fd, &line, &line_length, unbuffered_read) != -1;
+       array_index++, line_count++) 
     {
+      /* Have we exceeded # of lines to store? */
+      if (line_count_goal != 0 && line_count > line_count_goal) 
+	break;
+
       /* Remove trailing newlines? */
       if (flags & MAPF_CHOP)
 	do_chop (line);
@@ -213,11 +217,6 @@ mapfile (fd, line_count_goal, origin, nskip, callback_quantum, callback, array_n
 	}
 
       bind_array_element (entry, array_index, line, 0);
-
-      /* Have we exceeded # of lines to store? */
-      line_count++;
-      if (line_count_goal != 0 && line_count > line_count_goal) 
-	break;
     }
 
   xfree (line);

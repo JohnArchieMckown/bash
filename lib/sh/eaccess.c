@@ -82,8 +82,6 @@ sh_stat (path, finfo)
      const char *path;
      struct stat *finfo;
 {
-  static char *pbuf = 0;
-
   if (*path == '\0')
     {
       errno = ENOENT;
@@ -108,7 +106,7 @@ sh_stat (path, finfo)
      trailing slash.  Make sure /dev/fd/xx really uses DEV_FD_PREFIX/xx.
      On most systems, with the notable exception of linux, this is
      effectively a no-op. */
-      pbuf = xrealloc (pbuf, sizeof (DEV_FD_PREFIX) + strlen (path + 8));
+      char pbuf[32];
       strcpy (pbuf, DEV_FD_PREFIX);
       strcat (pbuf, path + 8);
       return (stat (pbuf, finfo));

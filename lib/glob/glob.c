@@ -200,11 +200,8 @@ mbskipname (pat, dname, flags)
   wchar_t *pat_wc, *dn_wc;
   size_t pat_n, dn_n;
 
-  pat_wc = dn_wc = (wchar_t *)NULL;
-
   pat_n = xdupmbstowcs (&pat_wc, NULL, pat);
-  if (pat_n != (size_t)-1)
-    dn_n = xdupmbstowcs (&dn_wc, NULL, dname);
+  dn_n = xdupmbstowcs (&dn_wc, NULL, dname);
 
   ret = 0;
   if (pat_n != (size_t)-1 && dn_n !=(size_t)-1)
@@ -224,8 +221,6 @@ mbskipname (pat, dname, flags)
 	   (pat_wc[0] != L'\\' || pat_wc[1] != L'.'))
 	ret = 1;
     }
-  else
-    ret = skipname (pat, dname, flags);
 
   FREE (pat_wc);
   FREE (dn_wc);
@@ -271,11 +266,8 @@ wdequote_pathname (pathname)
   /* Convert the strings into wide characters.  */
   n = xdupmbstowcs (&wpathname, NULL, pathname);
   if (n == (size_t) -1)
-    {
-      /* Something wrong.  Fall back to single-byte */
-      udequote_pathname (pathname);
-      return;
-    }
+    /* Something wrong. */
+    return;
   orig_wpathname = wpathname;
 
   for (i = j = 0; wpathname && wpathname[i]; )

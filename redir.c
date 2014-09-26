@@ -1007,16 +1007,6 @@ do_redirection_internal (redirect, flags)
 		close (redirector);
 	      REDIRECTION_ERROR (r, errno, -1);
 	    }
-	  if ((flags & RX_UNDOABLE) && (ri == r_move_input || ri == r_move_output))
-	    {
-	      /* r_move_input and r_move_output add an additional close()
-		 that needs to be undone */
-	      if (fcntl (redirector, F_GETFD, 0) != -1)
-		{
-		  r = add_undo_redirect (redir_fd, r_close_this, -1);
-		  REDIRECTION_ERROR (r, errno, -1);
-		}
-	    }
 #if defined (BUFFERED_INPUT)
 	  check_bash_input (redirector);
 #endif
@@ -1101,12 +1091,10 @@ do_redirection_internal (redirect, flags)
 
 #if defined (BUFFERED_INPUT)
 	  check_bash_input (redirector);
-	  r = close_buffered_fd (redirector);
+	  close_buffered_fd (redirector);
 #else /* !BUFFERED_INPUT */
-	  r = close (redirector);
+	  close (redirector);
 #endif /* !BUFFERED_INPUT */
-	  if (r < 0 && (flags & RX_INTERNAL) && (errno == EIO || errno == ENOSPC))
-	    REDIRECTION_ERROR (r, errno, -1);
 	}
       break;
 

@@ -77,8 +77,8 @@ wmatchlen (wpat, wmax)
      wchar_t *wpat;
      size_t wmax;
 {
-  wchar_t wc;
-  int matlen, bracklen, t, in_cclass, in_collsym, in_equiv;
+  wchar_t wc, *wbrack;
+  int matlen, t, in_cclass, in_collsym, in_equiv;
 
   if (*wpat == 0)
     return (0);
@@ -118,80 +118,58 @@ wmatchlen (wpat, wmax)
 	  break;
 	case L'[':
 	  /* scan for ending `]', skipping over embedded [:...:] */
-	  bracklen = 1;
+	  wbrack = wpat;
 	  wc = *wpat++;
 	  do
 	    {
 	      if (wc == 0)
 		{
-		  wpat--;			/* back up to NUL */
-	          matlen += bracklen;
-	          goto bad_bracket;
+	          matlen += wpat - wbrack - 1;	/* incremented below */
+	          break;
 	        }
 	      else if (wc == L'\\')
 		{
-		  /* *wpat == backslash-escaped character */
-		  bracklen++;
-		  /* If the backslash or backslash-escape ends the string,
-		     bail.  The ++wpat skips over the backslash escape */
-		  if (*wpat == 0 || *++wpat == 0)
-		    {
-		      matlen += bracklen;
-		      goto bad_bracket;
-		    }
+		  wc = *wpat++;
+		  if (*wpat == 0)
+		    break;
 		}
 	      else if (wc == L'[' && *wpat == L':')	/* character class */
 		{
 		  wpat++;
-		  bracklen++;
 		  in_cclass = 1;
 		}
 	      else if (in_cclass && wc == L':' && *wpat == L']')
 		{
 		  wpat++;
-		  bracklen++;
 		  in_cclass = 0;
 		}
 	      else if (wc == L'[' && *wpat == L'.')	/* collating symbol */
 		{
 		  wpat++;
-		  bracklen++;
 		  if (*wpat == L']')	/* right bracket can appear as collating symbol */
-		    {
-		      wpat++;
-		      bracklen++;
-		    }
+		    wpat++;
 		  in_collsym = 1;
 		}
 	      else if (in_collsym && wc == L'.' && *wpat == L']')
 		{
 		  wpat++;
-		  bracklen++;
 		  in_collsym = 0;
 		}
 	      else if (wc == L'[' && *wpat == L'=')	/* equivalence class */
 		{
 		  wpat++;
-		  bracklen++;
 		  if (*wpat == L']')	/* right bracket can appear as equivalence class */
-		    {
-		      wpat++;
-		      bracklen++;
-		    }
+		    wpat++;
 		  in_equiv = 1;
 		}
 	      else if (in_equiv && wc == L'=' && *wpat == L']')
 		{
 		  wpat++;
-		  bracklen++;
 		  in_equiv = 0;
 		}
-	      else
-		bracklen++;
 	    }
 	  while ((wc = *wpat++) != L']');
 	  matlen++;		/* bracket expression can only match one char */
-bad_bracket:
 	  break;
 	}
     }
@@ -235,8 +213,8 @@ umatchlen (pat, max)
      char *pat;
      size_t max;
 {
-  char c;
-  int matlen, bracklen, t, in_cclass, in_collsym, in_equiv;
+  char c, *brack;
+  int matlen, t, in_cclass, in_collsym, in_equiv;
 
   if (*pat == 0)
     return (0);
@@ -276,80 +254,58 @@ umatchlen (pat, max)
 	  break;
 	case '[':
 	  /* scan for ending `]', skipping over embedded [:...:] */
-	  bracklen = 1;
+	  brack = pat;
 	  c = *pat++;
 	  do
 	    {
 	      if (c == 0)
 		{
-		  pat--;			/* back up to NUL */
-		  matlen += bracklen;
-		  goto bad_bracket;
+	          matlen += pat - brack - 1;	/* incremented below */
+	          break;
 	        }
 	      else if (c == '\\')
 		{
-		  /* *pat == backslash-escaped character */
-		  bracklen++;
-		  /* If the backslash or backslash-escape ends the string,
-		     bail.  The ++pat skips over the backslash escape */
-		  if (*pat == 0 || *++pat == 0)
-		    {
-		      matlen += bracklen;
-		      goto bad_bracket;
-		    }
+		  c = *pat++;
+		  if (*pat == 0)
+		    break;
 		}
 	      else if (c == '[' && *pat == ':')	/* character class */
 		{
 		  pat++;
-		  bracklen++;
 		  in_cclass = 1;
 		}
 	      else if (in_cclass && c == ':' && *pat == ']')
 		{
 		  pat++;
-		  bracklen++;
 		  in_cclass = 0;
 		}
 	      else if (c == '[' && *pat == '.')	/* collating symbol */
 		{
 		  pat++;
-		  bracklen++;
 		  if (*pat == ']')	/* right bracket can appear as collating symbol */
-		    {
-		      pat++;
-		      bracklen++;
-		    }
+		    pat++;
 		  in_collsym = 1;
 		}
 	      else if (in_collsym && c == '.' && *pat == ']')
 		{
 		  pat++;
-		  bracklen++;
 		  in_collsym = 0;
 		}
 	      else if (c == '[' && *pat == '=')	/* equivalence class */
 		{
 		  pat++;
-		  bracklen++;
 		  if (*pat == ']')	/* right bracket can appear as equivalence class */
-		    {
-		      pat++;
-		      bracklen++;
-		    }
+		    pat++;
 		  in_equiv = 1;
 		}
 	      else if (in_equiv && c == '=' && *pat == ']')
 		{
 		  pat++;
-		  bracklen++;
 		  in_equiv = 0;
 		}
-	      else
-		bracklen++;
 	    }
 	  while ((c = *pat++) != ']');
 	  matlen++;		/* bracket expression can only match one char */
-bad_bracket:
 	  break;
 	}
     }

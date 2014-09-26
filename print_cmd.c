@@ -315,7 +315,6 @@ make_command_string_internal (command)
 	  cprintf ("( ");
 	  skip_this_indent++;
 	  make_command_string_internal (command->value.Subshell->command);
-	  PRINT_DEFERRED_HEREDOCS ("");
 	  cprintf (" )");
 	  break;
 
@@ -593,7 +592,6 @@ print_arith_for_command (arith_for_command)
   newline ("do\n");
   indentation += indentation_amount;
   make_command_string_internal (arith_for_command->action);
-  PRINT_DEFERRED_HEREDOCS ("");
   semicolon ();
   indentation -= indentation_amount;
   newline ("done");
@@ -655,7 +653,6 @@ print_group_command (group_command)
     }
 
   make_command_string_internal (group_command->command);
-  PRINT_DEFERRED_HEREDOCS ("");
 
   if (inside_function_def)
     {
