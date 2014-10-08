@@ -1,5 +1,6 @@
 *.bak
 *~
+tags
 *.swp
 *.patch
 *.orig
