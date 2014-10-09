@@ -73,8 +73,7 @@ extern char C2Etab[256];     /* control to ebcdic  table */
 #define CTRL_CHAR(c) (E2A(c) < control_character_threshold && ((E2A(c) & 0x80) == 0))
 #define META_CHAR(c) (E2A(c) > meta_character_threshold && E2A(c) <= largest_char)
 
-/*#define CTRL(c) A2E(E2A(c) & control_character_mask) */
-#define CTRL(c) CTRL_##c
+#define CTRL(c) A2E(E2A(c) & control_character_mask) 
 #define META(c) A2E(E2A(c) | meta_character_bit)
 
 #define UNMETA(c) A2E(E2A(c) & (~meta_character_bit))

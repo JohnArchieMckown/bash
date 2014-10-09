@@ -77,8 +77,14 @@ rl_make_bare_keymap ()
 #if 0
   for (i = 'A'; i < ('Z' + 1); i++)
     {
+#ifdef __MVS__
+            if (isupper(i)) {
+#endif
       keymap[i].type = ISFUNC;
       keymap[i].function = rl_do_lowercase_version;
+#ifdef __MVS__
+            }
+#endif
     }
 #endif
 
@@ -113,18 +119,25 @@ rl_make_keymap ()
   Keymap newmap;
 
   newmap = rl_make_bare_keymap ();
-
+#ifndef __MVS__
   /* All ASCII printing characters are self-inserting. */
   for (i = E2A(' '); i < 127; i++)
+#endif
+  /* Test for printable EBCDIC characters */
+  for (i=0; i<127;i++)
+    if (isprint(i) )
+#endif
     newmap[i].function = rl_insert;
 
-  newmap[E2A(TAB)].function = rl_insert;
-  newmap[E2A(RUBOUT)].function = rl_rubout;	/* RUBOUT == 127 */
-  newmap[E2A(CTRL('H'))].function = rl_rubout;
+  newmap[TAB].function = rl_insert;
+  newmap[RUBOUT].function = rl_rubout;	/* RUBOUT == 127 */
+  newmap[CTRL('H')].function = rl_rubout;
 
-#if KEYMAP_SIZE > 128
+#if KEYMAP_SIZE > 128 | defined(__MVS__)
   /* Printing characters in ISO Latin-1 and some 8-bit character sets. */
   for (i = 128; i < 256; i++)
+ifdef __MVS__
+    if (isprint(i))
     newmap[i].function = rl_insert;
 #endif /* KEYMAP_SIZE > 128 */
 
