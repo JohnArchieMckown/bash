@@ -7,6 +7,6 @@
 //STDIN    DD   PATH='/dev/null',PATHOPTS=(ORDONLY)
 //STDERR   DD   SYSOUT=*
 //STDPARM  DD   *
-SH cd /u/joarmc/projects/bash && make tests
+SH cd ~/projects/bash && make tests
 /*
 //

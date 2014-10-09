@@ -213,6 +213,6 @@
 /* internally in z/OS 2.1+ which does the "nasty" feature which   */
 /* messes up GNU autoconfig's ./configure                         */
 /******************************************************************/
-#define __new4201(args) 
-#endif
-#endif
+// #define __new4201(args)
+#endif /* __EDC_TARGET */
+#endif /* __MVS__ */

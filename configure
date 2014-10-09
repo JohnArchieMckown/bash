@@ -2202,12 +2202,15 @@ sparc-linux*)	opt_bash_malloc=no ;;	# sparc running linux; requires ELF
 *-beos*)	opt_bash_malloc=no ;;	# they say it's suitable
 *-cygwin*)	opt_bash_malloc=no ;;	# Cygnus's CYGWIN environment
 *-opennt*|*-interix*)	opt_bash_malloc=no ;;	# Interix, now owned by Microsoft
+*i370*)		opt_bash_malloc=no ;;	# os/390
 *-mvs*)		opt_bash_malloc=no ;;	# os/390
 esac
 
 # memory scrambling on free()
 case "${host_os}" in
 sco3.2v5*|sco3.2v4*)	opt_memscramble=no ;;
+*i370*) opt_memscramble=no ;;
+*-mvs*) opt_memscramble=no ;;
 *)			opt_memscramble=yes ;;
 esac
 
@@ -8727,7 +8730,7 @@ fi
 { $as_echo "$as_me:$LINENO: result: $ac_cv_type_unsigned_long_long" >&5
 $as_echo "$ac_cv_type_unsigned_long_long" >&6; }
   if test $ac_cv_type_unsigned_long_long = yes; then
-
+      
 cat >>confdefs.h <<\_ACEOF
 #define HAVE_UNSIGNED_LONG_LONG 1
 _ACEOF
@@ -8766,6 +8769,7 @@ else
 /* confdefs.h.  */
 _ACEOF
 cat confdefs.h >>conftest.$ac_ext
+      
 cat >>conftest.$ac_ext <<_ACEOF
 /* end confdefs.h.  */
 #include <sys/types.h>
@@ -26822,7 +26826,7 @@ _ACEOF
 fi
 
 
-
+      
 { $as_echo "$as_me:$LINENO: checking for intmax_t" >&5
 $as_echo_n "checking for intmax_t... " >&6; }
 if test "${bash_cv_type_intmax_t+set}" = set; then
@@ -26879,6 +26883,7 @@ else
 /* confdefs.h.  */
 _ACEOF
 cat confdefs.h >>conftest.$ac_ext
+      
 cat >>conftest.$ac_ext <<_ACEOF
 /* end confdefs.h.  */
 #include <sys/types.h>
@@ -31331,6 +31336,7 @@ _ACEOF
 powerux*)	LOCAL_LIBS="-lgen" ;;
 cygwin*)	LOCAL_CFLAGS=-DRECYCLES_PIDS ;;
 opennt*|interix*) LOCAL_CFLAGS="-DNO_MAIN_ENV_ARG -DBROKEN_DIRENT_D_INO -D_POSIX_SOURCE -D_ALL_SOURCE" ;;
+*i370*)		LOCAL_CFLAGS="-DNO_MAIN_ENV_ARG -D_ALL_SOURCE";;
 *-mvs*)		LOCAL_CFLAGS="-DNO_MAIN_ENV_ARG -D_ALL_SOURCE";;
 esac
 
