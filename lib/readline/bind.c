@@ -57,13 +57,6 @@ extern int errno;
 /* System-specific feature definitions and include files. */
 #include "rldefs.h"
 
-/*#ifdef __MVS__                */
-/*#include "ebcdic.h"           */
-/*#define E2A(c) (E2Atab[(c)])  */
-/*#else                         */
-/*#define E2A(c) (c)            */
-/*#endif                        */
-
 /* Some standard library routines. */
 #include "readline.h"
 #include "history.h"

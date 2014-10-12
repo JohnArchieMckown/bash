@@ -259,7 +259,7 @@ _rl_nsearch_dispatch (cxt, c)
     #ifdef __MVS__
     case CTRL_W:
     #else
-    case CTRL_W:
+    case CTRL('W'):
     #endif
       rl_unix_word_rubout (1, c);
       break;
@@ -267,7 +267,7 @@ _rl_nsearch_dispatch (cxt, c)
     #ifdef __MVS__
     case CTRL_U:
     #else
-    case CTRL_U:
+    case CTRL('U'):
     #endif
       rl_unix_line_discard (1, c);
       break;
@@ -279,7 +279,7 @@ _rl_nsearch_dispatch (cxt, c)
     #ifdef __MVS__
     case CTRL_H:
     #else
-    case CTRL_H:
+    case CTRL('H'):
     #endif
     case RUBOUT:
       if (rl_point == 0)
@@ -294,8 +294,8 @@ _rl_nsearch_dispatch (cxt, c)
     case CTRL_C:
     case CTRL_G:
     #else
-    case CTRL_C:
-    case CTRL_G:
+    case CTRL('C'):
+    case CTRL('G'):
     #endif
       rl_ding ();
       _rl_nsearch_abort (cxt);

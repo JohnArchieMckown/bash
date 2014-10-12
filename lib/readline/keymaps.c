@@ -44,10 +44,6 @@
 
 
 #ifdef __MVS__
-/*#include "ebcdic.h"             */
-/*#define E2A(c) (E2Atab[(c)])    */
-/*#else                           */
-/*#define E2A(c) (c)              */
 #include <ctype.h>
 #endif
 
