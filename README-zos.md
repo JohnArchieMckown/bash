@@ -16,11 +16,12 @@ position, I did:
 git branch bash-4.2-zos bash-4.2
 git checkout bash-4.2-zos
 
-At the time of the above, this forked the new branch from
-commit 495aee441b75276e38c75694ccb455bb6463fdb9
+At the time that I did the above, this forked the new branch from commit
+495aee441b75276e38c75694ccb455bb6463fdb9
 
 All changes were made in the bash-4.2-zos branch. The simple way to see
-what the changes are is to:  git diff bash-4.2 bash-4.2-zos
+what the changes are is to do the command:
+git diff bash-4.2 bash-4.2-zos
 
 The file dist.pax.Z was created after a successful configure, make, and
 make install on z/OS 2.1. It contains only the files needed to run BASH.
@@ -48,10 +49,13 @@ Manual changes after ./configure
 Source code availability
 ------------------------
 BASH is licensed under the GPL. This requires that, if distributed, all changes
-to the source must be available. In order to not force a source download
-for people who only want the executable, the source is not included in this
-PDS. The source is available at https://github.com/JohnArchieMckown/bash
-and can most easily be downloaded by doing the command:
+to the source must be available.  This release of BASH is normally distributed
+via the http://cbttape.org site.  There are two different downloads available.
+One is with the full source.  The other is only with the files needed to actual
+run BASH.  The file you are reading is the one in the UNIX directory itself, so
+you have all the source, which satisfies the GPL requirements.  The source is
+also available at https://github.com/JohnArchieMckown/bash and can most easily
+be downloaded by doing the command:
 
 git clone git@github.com:JohnArchieMckown/bash.git
 
@@ -59,8 +63,9 @@ However, it can also be downloaded from your browser in "zip" format
 from the web site. The source on github is in ASCII, not EBCDIC! And it
 uses UNIX LF line endings, not Windows CRLF line endings.  It is your
 responsibility to do the ASCII to EBCDIC translation as well as changing
-the line endings if you use Windows. I am not a Windows power user, so I don't
-really know how to do all of this. Using Linux, the simpliest thing to do is:
+the line endings if you use Windows. I am not a Windows power user, so I
+don't really know how to do all of this. Using Linux, the simpliest
+thing to do is:
 
 1. Go to the web site above
 2. Make sure that you are on the branch "bash-4.2-zos" and
@@ -94,3 +99,44 @@ should be able to do something like:
     the bash-4.2-zos subdirectories. The former has the ASCII. The latter has
     the EBCDIC. You can remove the former with the command:
     rm -rf bash-bash-4.2-zos
+
+z/OS UNIX post install customizations
+-------------------------------------
+
+First off, in order to enable BASH line editing to be equivalent to what is
+normal in many Linux environments, it is necessary to copy the "initrc" file
+which is in the dist/bin subdirectory to the /etc subdirectory. If you don't
+have the ability to do this, you can copy it into the "~/.inputrc" file. That is
+you need to copy it into your home directory, and name it ".inputrc" instead of
+"inputrc".  This is not really necessary, it simply puts in more key mappings
+for more keys on the PC when you are using some of the common Linux terminal
+emulators such as "xterm".
+
+If you want BASH to be your normal shell and your z/OS security administrator
+does not want to update your UNIX profile, then you can do this rather easily by
+updating the .profile start up script in your home directory, that is
+"~/.profile". Do _not_ start this file with the normal "magic" first line of
+#!/bin/sh
+Instead use something like:
+set | fgrep -q BASH_ || exec -a -bash /usr/local/bin/bash
+You must change the "/usr/local/bin" to the actual directory which contains the
+bash executable.
+
+One problem which does not have a simple solution is that most people are used
+to starting all of their shell scripts with the "magic" line in the previous
+paragraph.  Unfortunately, this _will_ cause BASH to invoke the normal z/OS
+/bin/sh program, thus running the script using it instead of BASH.  I cannot
+think of a simple way around this.
+
+Known differences / problems
+----------------------------
+1. For some reason, when an array is accessed with a subscript of either
+   "@" or "*", the order of the entries is not necessarily the same as
+   they were in the tests. They are all output, but not in the same
+   order. The BASH info text does not, in itself, specify the order of
+   output as best as I can tell.
+
+2. There may be differences in the characters output from some functions
+   due to the differences in the collating sequences in EBCDIC versus
+   ASCII. One immediate difference is that in ASCII, numbers are
+   collated _before_ letters, whereas in EBCDIC, they come after.
