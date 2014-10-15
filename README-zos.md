@@ -118,15 +118,23 @@ updating the .profile start up script in your home directory, that is
 "~/.profile". Do _not_ start this file with the normal "magic" first line of
 #!/bin/sh
 Instead use something like:
-set | fgrep -q BASH_ || exec -a -bash /usr/local/bin/bash
-You must change the "/usr/local/bin" to the actual directory which contains the
-bash executable.
+tty -s && ps -o args -p $$ | fgrep -q bash || exec -a -bash env bash --login
+The above assumes that bash is on the PATH. The line above first tests to see
+if you're running with stdin assigned to a terminal (tty -s). If so the rest
+of the line tests to see if you are already running bash. If you are not, then
+it replaces your process image with the bash executable image.
 
-One problem which does not have a simple solution is that most people are used
-to starting all of their shell scripts with the "magic" line in the previous
-paragraph.  Unfortunately, this _will_ cause BASH to invoke the normal z/OS
-/bin/sh program, thus running the script using it instead of BASH.  I cannot
-think of a simple way around this.
+If your shop uses COZBATCH from Dovetailed Technologies, I strongly recommend
+that you do _NOT_ change the PROGRAM entry in your OMVS segment to anything
+other than /bin/sh. That is because COZBATCH apparently uses the $SHELL
+environment variable, set by the IBM login process to determine the name of
+the shell to be used within it. To the best of my knowledge, only /bin/sh
+implements the "local spawn" processing option of the spawn() function
+specified by the _BPX_SHAREAS and _BPX_SPAWN_SCRIPT environment variables.
+This is critically necessary if you are using DD statements in the step
+which are accessed by UNIX commands in your scripts. This would include
+programs such as pax, fromdsn, and todsn.
+
 
 Known differences / problems
 ----------------------------
@@ -140,3 +148,58 @@ Known differences / problems
    due to the differences in the collating sequences in EBCDIC versus
    ASCII. One immediate difference is that in ASCII, numbers are
    collated _before_ letters, whereas in EBCDIC, they come after.
+
+3. You need to keep in mind that many shell scripts start with the line:
+   #!/bin/sh
+   This is because /bin/sh is a symlink to BASH. However, this is _not_
+   true in z/OS. This means that any shell script which starts with that
+   line will be run in the normal /bin/sh UNIX shell command processor
+   and _NOT_ in BASH. Assuming that BASH is on your PATH, you can avoid
+   this by replacing the above line with one similar to:
+   #!/bin/env bash
+
+4. Another thing to look at is the IBM supplied /etc/profile file. This
+   file is "sourced" by both /bin/sh and BASH when they are the "login
+   shell". In this file is a reference to the $SHELL environment
+   variable.  As best as I can tell, this is set to the value specified
+   in the user's OMVS segment. Although I have not encountered it, the
+   usage in /etc/profile _might_, under some circumstances, cause BASH
+   initialization to reinvoke the /bin/sh program as the shell. In
+   particular, if the STEPLIB environment variable is unset and the OMVS
+   segment has /bin/sh as the shell program, the distributed
+   /etc/profile will reinvoke /bin/sh with STEPLIB set to "none". Review
+   this and change as needed.
+
+5. The following is not necessarily recommended. But it may be of help
+   if your organization decides to use BASH as a standard UNIX shell.
+   It is possible to run BASH from the dynamic LPA. The BASH executable
+   must reside in a PDSE library. This means that it cannot be in the
+   LPALIB created at IPL time. What can be done is to copy the BASH
+   executable to a "system" level PDSE library, preferrable a "system"
+   type library. It can then be put into dynamic LPA using a SETPROG
+   command issued via COMMNDnn member of PARMLIB. Similar to:
+
+   SETPROG LPA,ADD,MODNAME=BASH,DSNAME=system.pdse.library
+
+   You must also add the "sticky" bit to the bash executable file in the
+   UNIX directory.
+
+   chmod o+t /path/to/bash
+
+6. I had to regenerate the y.tab.c file from parse.y for z/OS.
+   Normally, this is done with the yacc program. Unfortunately, the IBM
+   yacc was not able to process the parse.y file correctly. I had to use
+   GNU bison. Luckily, the version available from IBM at
+   ftp://public.dhe.ibm.com/s390/zos/tools/diffutils/diffutils.pax.Z.bin
+   runs on z/OS 2.1 and can properly process this file. If you need to
+   change parse.y for some reason, you will need to download bison.  In
+   addition, you must run bison in "yacc" mode. You do this by including
+   the -d and -y options.  E.g.  $bison -d -y parse.y You might want to
+   include the following alias in your .bashrc on z/OS:
+   alias yacc='bison -d -y'
+
+7. In addition, to be more Linux compatible, you need to put the
+   contents of the INPUTRC member into the UNIX file /etc/inputrc. This
+   sets up some of the extra PC keyboard keys (HOME, Delete, etc)
+   correctly. Or at least, as a user, put it in ~/.inputrc .
+
