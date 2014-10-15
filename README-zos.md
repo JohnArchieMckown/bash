@@ -118,7 +118,7 @@ updating the .profile start up script in your home directory, that is
 "~/.profile". Do _not_ start this file with the normal "magic" first line of
 #!/bin/sh
 Instead use something like:
-tty -s && ps -o args -p $$ | fgrep -q bash || exec -a -bash env bash --login
+tty -s && { ps -o args -p $$ | fgrep -q bash || exec -a -bash env bash --login; }
 The above assumes that bash is on the PATH. The line above first tests to see
 if you're running with stdin assigned to a terminal (tty -s). If so the rest
 of the line tests to see if you are already running bash. If you are not, then
@@ -127,10 +127,10 @@ it replaces your process image with the bash executable image.
 If your shop uses COZBATCH from Dovetailed Technologies, I strongly recommend
 that you do _NOT_ change the PROGRAM entry in your OMVS segment to anything
 other than /bin/sh. That is because COZBATCH apparently uses the $SHELL
-environment variable, set by the IBM login process to determine the name of
+environment variable, set by the IBM login process, to determine the name of
 the shell to be used within it. To the best of my knowledge, only /bin/sh
 implements the "local spawn" processing option of the spawn() function
-specified by the _BPX_SHAREAS and _BPX_SPAWN_SCRIPT environment variables.
+specified via the _BPX_SHAREAS and _BPX_SPAWN_SCRIPT environment variables.
 This is critically necessary if you are using DD statements in the step
 which are accessed by UNIX commands in your scripts. This would include
 programs such as pax, fromdsn, and todsn.
